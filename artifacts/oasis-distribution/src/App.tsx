@@ -14,6 +14,7 @@ import { Quality } from "@/components/Quality";
 import { CatalogCTA } from "@/components/CatalogCTA";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ function Home() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

@@ -5,22 +5,26 @@ const partners = [
   {
     name: "K&D Latin Food",
     url: "https://kdlatinfood.com/",
+    logo: "https://kdlatinfood.com/wp-content/uploads/2025/08/Untitled-design-1.webp",
     description:
       "Specialized in frozen Latin foods including empanadas, pastelitos, cachitos, tequeños, and pan de jamón for restaurants, supermarkets, distributors, and cafés.",
     products: ["Empanadas", "Pastelitos", "Cachitos", "Tequeños", "Pan de Jamón"],
     color: "from-orange-50 to-amber-50",
     border: "border-orange-200",
     tag: "bg-orange-100 text-orange-800",
+    logoBg: "bg-white",
   },
   {
     name: "PANNA Manufacturing",
     url: "https://www.pannatogo.com/",
+    logo: "https://www.pannatogo.com/wp-content/uploads/2023/08/PANNA-MANUFACTURING.png",
     description:
       "Wholesale Latin bakery and frozen food manufacturer offering products such as cachitos, tequeños, empanadas, pandebonos, sauces, and food service solutions.",
     products: ["Cachitos", "Tequeños", "Empanadas", "Pandebonos", "Sauces"],
     color: "from-sky-50 to-blue-50",
     border: "border-sky-200",
     tag: "bg-sky-100 text-sky-800",
+    logoBg: "bg-white",
   },
 ];
 
@@ -56,19 +60,30 @@ export function Partners() {
               transition={{ duration: 0.5, delay: index * 0.15 }}
               className={`bg-gradient-to-br ${partner.color} rounded-2xl border ${partner.border} p-8 shadow-sm hover:shadow-md transition-all duration-300`}
             >
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-foreground">{partner.name}</h3>
+              <div className="flex items-start justify-between mb-5">
+                <div className={`${partner.logoBg} rounded-xl p-3 shadow-sm border border-border/50 flex items-center justify-center`} style={{ minHeight: 72, minWidth: 140 }}>
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    className="h-12 max-w-[160px] object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
+                  />
+                </div>
                 <a
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid={`link-partner-${index}`}
-                  className="text-muted-foreground hover:text-primary transition-colors p-1"
+                  className="text-muted-foreground hover:text-primary transition-colors p-1 mt-1"
                   aria-label={`Visit ${partner.name} website`}
                 >
                   <ExternalLink size={16} />
                 </a>
               </div>
+
+              <h3 className="text-lg font-bold text-foreground mb-2">{partner.name}</h3>
 
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 {partner.description}

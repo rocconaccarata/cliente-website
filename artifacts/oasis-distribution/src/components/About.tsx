@@ -10,9 +10,9 @@ const features = [
 ];
 
 const stats = [
-  { label: "Product Categories", value: "10+" },
+  { label: "Products in Catalog", value: "43+" },
+  { label: "Manufacturing Partners", value: "2" },
   { label: "Serving Region", value: "South Florida" },
-  { label: "Client Base", value: "Food Service" },
 ];
 
 export function About() {

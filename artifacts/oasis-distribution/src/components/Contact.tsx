@@ -20,7 +20,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Mail, Building, Truck } from "lucide-react";
+import { MapPin, Mail, Building, Truck, Phone } from "lucide-react";
+
+const CONTACT_EMAIL = "oasisdistributionmiami@gmail.com";
+const CONTACT_PHONE = "(786) 277-5660";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name is required" }),
@@ -49,10 +52,16 @@ export function Contact() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    const subject = encodeURIComponent(
+      `Wholesale Inquiry — ${values.businessName} (${values.interest})`
+    );
+    const body = encodeURIComponent(
+      `Name: ${values.name}\nBusiness: ${values.businessName}\nEmail: ${values.email}\nPhone: ${values.phone}\nBusiness Type: ${values.businessType}\nProduct Interest: ${values.interest}\n\nMessage:\n${values.message || "—"}`
+    );
+    window.open(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`, "_blank");
     toast({
-      title: "Request Received",
-      description: "Thank you for your interest. Our sales team will contact you shortly.",
+      title: "Opening email client…",
+      description: "Your inquiry details are pre-filled. Just hit Send.",
     });
     form.reset();
   }
@@ -96,11 +105,31 @@ export function Contact() {
 
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <Phone size={20} />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">Phone / WhatsApp</h4>
+                  <a
+                    href={`tel:+17862775660`}
+                    className="text-muted-foreground text-sm hover:text-primary transition-colors"
+                  >
+                    {CONTACT_PHONE}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                   <Mail size={20} />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">Email</h4>
-                  <p className="text-muted-foreground text-sm">sales@oasisdistribution.com</p>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="text-muted-foreground text-sm hover:text-primary transition-colors break-all"
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
                 </div>
               </div>
 
@@ -219,24 +248,14 @@ export function Contact() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="cachito-ham-cheese">Cachito — Ham &amp; Cheese</SelectItem>
-                          <SelectItem value="cachito-cheese">Cachito — Cheese</SelectItem>
-                          <SelectItem value="tequeno-cheese">Tequeño — Cheese</SelectItem>
-                          <SelectItem value="tequeno-guava-cheese">Tequeño — Guava &amp; Cheese</SelectItem>
-                          <SelectItem value="empanada-arg-beef">Empanada — Argentinian Beef</SelectItem>
-                          <SelectItem value="empanada-arg-chicken">Empanada — Argentinian Chicken</SelectItem>
-                          <SelectItem value="empanada-arg-spinach">Empanada — Argentinian Spinach</SelectItem>
-                          <SelectItem value="empanada-ven-cheese">Empanada — Venezuelan Cheese</SelectItem>
-                          <SelectItem value="empanada-ven-chicken">Empanada — Venezuelan Chicken</SelectItem>
-                          <SelectItem value="empanada-ven-beef">Empanada — Venezuelan Ground Beef</SelectItem>
-                          <SelectItem value="empanada-ven-shredded">Empanada — Venezuelan Shredded Beef</SelectItem>
-                          <SelectItem value="pandebono">Pandebono</SelectItem>
-                          <SelectItem value="pastelitos">Pastelitos</SelectItem>
-                          <SelectItem value="pan-de-jamon">Pan de Jamón</SelectItem>
-                          <SelectItem value="arepas">Arepas</SelectItem>
-                          <SelectItem value="yuca-bites">Yuca Bites</SelectItem>
-                          <SelectItem value="sauces">Sauces</SelectItem>
-                          <SelectItem value="bakery-items">Bakery Items</SelectItem>
+                          <SelectItem value="pastelitos">Pastelitos (K&D)</SelectItem>
+                          <SelectItem value="cachitos">Cachitos</SelectItem>
+                          <SelectItem value="tequenos">Tequeños</SelectItem>
+                          <SelectItem value="emp-venezolana">Empanadas Venezolanas</SelectItem>
+                          <SelectItem value="emp-argentina">Empanadas Argentinas</SelectItem>
+                          <SelectItem value="emp-colombiana">Empanada Colombiana (PANNA)</SelectItem>
+                          <SelectItem value="pan-de-jamon">Pan de Jamón (K&D)</SelectItem>
+                          <SelectItem value="pandebono">Pandebono (PANNA)</SelectItem>
                           <SelectItem value="multiple">Multiple Products</SelectItem>
                         </SelectContent>
                       </Select>

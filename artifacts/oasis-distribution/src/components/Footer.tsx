@@ -48,10 +48,19 @@ export function Footer() {
             </ul>
 
             <h4 className="font-bold text-base mt-6 mb-4">Contact Info</h4>
-            <ul className="space-y-2 text-sm text-muted">
-              <li>Florida-Based Latin Food Distribution</li>
-              <li>sales@oasisdistribution.com</li>
-              <li>Wholesale Inquiries Only</li>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="tel:+17862775660" className="text-muted hover:text-white transition-colors">
+                  (786) 277-5660
+                </a>
+              </li>
+              <li>
+                <a href="mailto:oasisdistributionmiami@gmail.com" className="text-muted hover:text-white transition-colors">
+                  oasisdistributionmiami@gmail.com
+                </a>
+              </li>
+              <li className="text-muted">Homestead, Florida</li>
+              <li className="text-muted/70 text-xs mt-1">Wholesale Inquiries Only</li>
             </ul>
           </div>
 
