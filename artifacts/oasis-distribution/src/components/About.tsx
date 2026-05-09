@@ -53,7 +53,7 @@ export function About() {
           >
             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <img
-                src="/src/assets/images/about-warehouse.png"
+                src="/about-factory.png"
                 alt="Wholesale food distribution warehouse"
                 className="w-full h-full object-cover"
               />
