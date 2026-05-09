@@ -33,7 +33,7 @@ export const translations = {
       ],
       stats: [
         { value: "43+", label: "Products in Catalog" },
-        { value: "2", label: "Manufacturing Partners" },
+        { value: "8+", label: "Years in Business" },
         { value: "South Florida", label: "Serving Region" },
       ],
       cardText:
@@ -237,7 +237,7 @@ export const translations = {
       ],
       stats: [
         { value: "43+", label: "Productos en Catálogo" },
-        { value: "2", label: "Socios Manufactureros" },
+        { value: "8+", label: "Años en el Negocio" },
         { value: "Sur de Florida", label: "Región de Servicio" },
       ],
       cardText:
