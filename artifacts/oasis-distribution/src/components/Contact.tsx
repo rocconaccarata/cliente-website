@@ -186,14 +186,19 @@ export function Contact() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="cachitos-ham-cheese">Cachitos — Ham &amp; Cheese</SelectItem>
-                          <SelectItem value="cachitos-cheese">Cachitos — Cheese</SelectItem>
-                          <SelectItem value="tequenos-cheese">Tequeños — Cheese</SelectItem>
-                          <SelectItem value="tequenos-guava-cheese">Tequeños — Guava &amp; Cheese</SelectItem>
-                          <SelectItem value="empanadas-beef">Empanadas — Argentinian Beef</SelectItem>
+                          <SelectItem value="cachito-ham-cheese">Cachito — Ham &amp; Cheese</SelectItem>
+                          <SelectItem value="cachito-cheese">Cachito — Cheese</SelectItem>
+                          <SelectItem value="tequeno-cheese">Tequeño — Cheese</SelectItem>
+                          <SelectItem value="tequeno-guava-cheese">Tequeño — Guava &amp; Cheese</SelectItem>
+                          <SelectItem value="empanada-arg-beef">Empanada — Argentinian Beef</SelectItem>
+                          <SelectItem value="empanada-arg-chicken">Empanada — Argentinian Chicken</SelectItem>
+                          <SelectItem value="empanada-arg-spinach">Empanada — Argentinian Spinach</SelectItem>
+                          <SelectItem value="empanada-ven-cheese">Empanada — Venezuelan Cheese</SelectItem>
+                          <SelectItem value="empanada-ven-chicken">Empanada — Venezuelan Chicken</SelectItem>
+                          <SelectItem value="empanada-ven-beef">Empanada — Venezuelan Ground Beef</SelectItem>
+                          <SelectItem value="empanada-ven-shredded">Empanada — Venezuelan Shredded Beef</SelectItem>
                           <SelectItem value="pandebono">Pandebono — Classic Cheese</SelectItem>
-                          <SelectItem value="arepas">Arepas</SelectItem>
-                          <SelectItem value="yuca-bites">Yuca Bites</SelectItem>
+                          <SelectItem value="empanada-colombiana">Empanada — Colombian Style</SelectItem>
                           <SelectItem value="multiple">Multiple Products</SelectItem>
                         </SelectContent>
                       </Select>
