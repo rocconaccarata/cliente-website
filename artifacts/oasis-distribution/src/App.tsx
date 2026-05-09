@@ -3,13 +3,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
+import ProductsPage from "@/pages/products-page";
 
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
-import { Products } from "@/components/Products";
 import { Quality } from "@/components/Quality";
 import { CatalogCTA } from "@/components/CatalogCTA";
 import { Contact } from "@/components/Contact";
@@ -26,7 +26,6 @@ function Home() {
         <Hero />
         <About />
         <Services />
-        <Products />
         <Quality />
         <CatalogCTA />
         <Contact />
@@ -41,6 +40,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/products" component={ProductsPage} />
       <Route component={NotFound} />
     </Switch>
   );

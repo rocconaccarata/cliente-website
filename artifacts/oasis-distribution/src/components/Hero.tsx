@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useLocation } from "wouter";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/contexts/LanguageContext";
@@ -77,6 +78,7 @@ function Logo3D() {
 
 export function Hero() {
   const { t } = useLang();
+  const [, navigate] = useLocation();
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -134,7 +136,7 @@ export function Hero() {
         >
           <Button
             size="lg"
-            onClick={() => scrollTo("products")}
+            onClick={() => navigate("/products")}
             data-testid="button-hero-products"
             className="px-8 py-3 text-base"
           >

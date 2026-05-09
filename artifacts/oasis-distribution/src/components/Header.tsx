@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useLang } from "@/contexts/LanguageContext";
@@ -7,6 +8,7 @@ export function Header() {
   const { lang, setLang, t } = useLang();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [, navigate] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -18,6 +20,15 @@ export function Header() {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
+  };
+
+  const handleNavClick = (id: string) => {
+    if (id === "products") {
+      navigate("/products");
+      setMobileMenuOpen(false);
+    } else {
+      scrollTo(id);
+    }
   };
 
   const navLinks = [
@@ -50,7 +61,7 @@ export function Header() {
           {navLinks.map((link) => (
             <button
               key={link.id}
-              onClick={() => scrollTo(link.id)}
+              onClick={() => handleNavClick(link.id)}
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
               data-testid={`nav-${link.id}`}
             >
@@ -123,7 +134,7 @@ export function Header() {
           {navLinks.map((link) => (
             <button
               key={link.id}
-              onClick={() => scrollTo(link.id)}
+              onClick={() => handleNavClick(link.id)}
               className="text-left text-base font-medium py-2 text-foreground hover:text-primary transition-colors"
             >
               {link.label}
