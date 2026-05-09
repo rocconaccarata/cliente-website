@@ -32,7 +32,7 @@ export function Hero() {
             <img
               src="/oasis-logo.jpg"
               alt="Oasis Distribution"
-              className="w-48 md:w-64 lg:w-72 mx-auto object-contain drop-shadow-xl"
+              className="w-80 md:w-96 lg:w-[26rem] mx-auto object-contain drop-shadow-xl"
             />
           </div>
         </motion.div>
