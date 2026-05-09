@@ -8,6 +8,7 @@ const partners = {
   kd: {
     name: "K&D Latin Food",
     url: "https://kdlatinfood.com/",
+    logo: "https://kdlatinfood.com/wp-content/uploads/2025/08/Untitled-design-1.webp",
     tagline: "Frozen Latin foods made in South Florida",
     accentFrom: "from-orange-500",
     accentTo: "to-red-500",
@@ -19,6 +20,7 @@ const partners = {
   panna: {
     name: "PANNA Manufacturing",
     url: "https://www.pannatogo.com/",
+    logo: "https://www.pannatogo.com/wp-content/uploads/2023/08/PANNA-MANUFACTURING.png",
     tagline: "Wholesale Latin bakery & frozen food manufacturer",
     accentFrom: "from-sky-500",
     accentTo: "to-blue-600",
@@ -177,8 +179,12 @@ export function Products() {
                     : "border-border bg-white hover:border-border/70 hover:shadow-sm"
                 }`}
               >
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${partner.accentFrom} ${partner.accentTo} flex items-center justify-center shrink-0`}>
-                  <span className="text-white font-black text-xs">{key === "kd" ? "K&D" : "P"}</span>
+                <div className="w-16 h-10 rounded-xl bg-white border border-border/50 flex items-center justify-center shrink-0 overflow-hidden px-1">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="max-h-8 max-w-full object-contain"
+                  />
                 </div>
                 <div className="text-left">
                   <div className="font-bold text-foreground text-sm leading-tight">{partner.name}</div>
