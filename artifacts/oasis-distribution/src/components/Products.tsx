@@ -1,219 +1,206 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
-type Category = "all" | "cachitos" | "tequenos" | "empanadas" | "colombian";
+type Partner = "kd" | "panna";
 
-const products = [
-  {
-    id: "cachito-ham-cheese",
-    name: "Cachito",
-    variant: "Ham & Cheese",
-    origin: "Venezuelan",
-    category: "cachitos" as Category,
-    description: "Finely chopped ham and mozzarella cheese stuffed and rolled in soft, golden bread dough. A Venezuelan breakfast staple.",
-    servingSize: "1 piece (170g)",
-    image: "/products/cachito-ham-cheese.jpg",
-    tags: ["Frozen", "Ready to Bake", "Breakfast"],
-    accent: "bg-amber-100 text-amber-800",
+const partners = {
+  kd: {
+    name: "K&D Latin Food",
+    url: "https://kdlatinfood.com/",
+    tagline: "Frozen Latin foods made in South Florida",
+    accentFrom: "from-orange-500",
+    accentTo: "to-red-500",
+    badgeBg: "bg-orange-100",
+    badgeText: "text-orange-800",
+    borderActive: "border-orange-400",
+    bgLight: "bg-orange-50",
   },
-  {
-    id: "cachito-cheese",
-    name: "Cachito",
-    variant: "Cheese",
-    origin: "Venezuelan",
-    category: "cachitos" as Category,
-    description: "Soft bread dough filled with rich, melted cheese. Light, flaky, and perfect for breakfast service or café menus.",
-    servingSize: "1 piece (170g)",
-    image: "/products/cachito-cheese.jpg",
-    tags: ["Frozen", "Ready to Bake", "Breakfast"],
-    accent: "bg-amber-100 text-amber-800",
+  panna: {
+    name: "PANNA Manufacturing",
+    url: "https://www.pannatogo.com/",
+    tagline: "Wholesale Latin bakery & frozen food manufacturer",
+    accentFrom: "from-sky-500",
+    accentTo: "to-blue-600",
+    badgeBg: "bg-sky-100",
+    badgeText: "text-sky-800",
+    borderActive: "border-sky-400",
+    bgLight: "bg-sky-50",
   },
+};
+
+const kdProducts = [
   {
-    id: "tequeno-cheese",
-    name: "Tequeño",
-    variant: "Cheese",
-    origin: "Venezuelan",
-    category: "tequenos" as Category,
-    description: "White cheese wrapped in golden puff pastry dough, fried or baked to crispy perfection. 12 pieces per container.",
-    servingSize: "1 piece (74g)",
-    image: "/products/tequeno-cheese.jpg",
-    tags: ["Frozen", "Fry or Bake", "Snack"],
-    accent: "bg-yellow-100 text-yellow-800",
-  },
-  {
-    id: "tequeno-guava-cheese",
-    name: "Tequeño",
-    variant: "Guava & Cheese",
-    origin: "Venezuelan",
-    category: "tequenos" as Category,
-    description: "White cheese and sweet guava paste wrapped in puff pastry — a sweet-savory combination beloved across Latin America.",
-    servingSize: "1 piece (74g)",
-    image: "/products/tequeno-guava-cheese.jpg",
-    tags: ["Frozen", "Fry or Bake", "Snack"],
-    accent: "bg-yellow-100 text-yellow-800",
-  },
-  {
-    id: "empanada-arg-beef",
-    name: "Empanada",
-    variant: "Argentinian Beef",
-    origin: "Argentinian",
-    category: "empanadas" as Category,
-    description: "Half-moon dough stuffed with ground beef, green onions, and hard-boiled eggs. A hearty classic, 4 pieces per container.",
-    servingSize: "1 piece (85g)",
-    image: "/products/empanada-argentinian-beef.jpg",
-    tags: ["Frozen", "Ready to Bake", "Savory"],
-    accent: "bg-orange-100 text-orange-800",
-  },
-  {
-    id: "empanada-arg-chicken",
-    name: "Empanada",
-    variant: "Argentinian Chicken",
-    origin: "Argentinian",
-    category: "empanadas" as Category,
-    description: "Flaky pastry filled with seasoned shredded chicken. A lighter option ideal for food service and catering.",
-    servingSize: "1 piece (85g)",
-    image: "/products/empanada-argentinian-chicken.jpg",
-    tags: ["Frozen", "Ready to Bake", "Savory"],
-    accent: "bg-orange-100 text-orange-800",
-  },
-  {
-    id: "empanada-arg-spinach",
-    name: "Empanada",
-    variant: "Argentinian Spinach",
-    origin: "Argentinian",
-    category: "empanadas" as Category,
-    description: "Golden pastry stuffed with seasoned spinach filling. A vegetarian-friendly option for diverse menus.",
-    servingSize: "1 piece (85g)",
-    image: "/products/empanada-argentinian-spinach.jpg",
-    tags: ["Frozen", "Ready to Bake", "Vegetarian"],
-    accent: "bg-orange-100 text-orange-800",
-  },
-  {
-    id: "empanada-ven-cheese",
-    name: "Empanada",
-    variant: "Venezuelan Cheese",
-    origin: "Venezuelan",
-    category: "empanadas" as Category,
-    description: "Corn dough empanada filled with white cheese — a Venezuelan staple served at breakfast and throughout the day.",
-    servingSize: "1 piece",
-    image: "/products/empanada-venezolana-cheese.jpg",
-    tags: ["Frozen", "Ready to Fry/Bake", "Breakfast"],
-    accent: "bg-red-100 text-red-800",
-  },
-  {
-    id: "empanada-ven-chicken",
-    name: "Empanada",
-    variant: "Venezuelan Chicken",
-    origin: "Venezuelan",
-    category: "empanadas" as Category,
-    description: "Corn dough filled with tender seasoned chicken. A versatile and crowd-pleasing option for any meal service.",
-    servingSize: "1 piece",
-    image: "/products/empanada-venezolana-chicken.jpg",
-    tags: ["Frozen", "Ready to Fry/Bake", "Savory"],
-    accent: "bg-red-100 text-red-800",
-  },
-  {
-    id: "empanada-ven-beef",
-    name: "Empanada",
-    variant: "Venezuelan Ground Beef",
-    origin: "Venezuelan",
-    category: "empanadas" as Category,
-    description: "Corn dough stuffed with seasoned ground beef. Rich and satisfying — a top seller for restaurants and food trucks.",
-    servingSize: "1 piece",
-    image: "/products/empanada-venezolana-beef.jpg",
-    tags: ["Frozen", "Ready to Fry/Bake", "Savory"],
-    accent: "bg-red-100 text-red-800",
-  },
-  {
-    id: "empanada-ven-shredded-beef",
-    name: "Empanada",
-    variant: "Venezuelan Shredded Beef",
-    origin: "Venezuelan",
-    category: "empanadas" as Category,
-    description: "Corn dough with slow-cooked shredded beef filling. Bold flavor, ideal for wholesale volume food service.",
-    servingSize: "1 piece",
-    image: "/products/empanada-venezolana-shredded-beef.jpg",
-    tags: ["Frozen", "Ready to Fry/Bake", "Savory"],
-    accent: "bg-red-100 text-red-800",
-  },
-  {
-    id: "pandebono",
-    name: "Pandebono",
-    variant: "Classic Cheese",
-    origin: "Colombian",
-    category: "colombian" as Category,
-    description: "White cheese and tapioca flour baked into small, puffy buns. Crispy outside, light and chewy inside. 4 pieces per container.",
-    servingSize: "1 piece (57g)",
-    image: "/products/pandebono.jpg",
-    tags: ["Frozen", "Ready to Bake", "Bread"],
-    accent: "bg-lime-100 text-lime-800",
-  },
-  {
-    id: "empanada-colombiana",
-    name: "Empanada",
-    variant: "Colombian Style",
-    origin: "Colombian",
-    category: "colombian" as Category,
-    description: "Colombian-style corn empanada with a distinct flavor profile. Perfect for authentic Latin menus and specialty food programs.",
-    servingSize: "1 piece",
-    image: "/products/empanada-colombiana.jpg",
-    tags: ["Frozen", "Ready to Fry/Bake", "Savory"],
-    accent: "bg-lime-100 text-lime-800",
-  },
-  {
-    id: "pastelitos",
+    id: "kd-pastelitos",
     name: "Pastelitos",
-    variant: "Assorted",
-    origin: "Latin American",
-    category: "empanadas" as Category,
-    description: "Flaky puff pastry filled with savory or sweet fillings. A staple of Latin American bakeries and a top seller for café and convenience menus.",
-    servingSize: "Per unit",
-    image: null,
-    tags: ["Frozen", "Ready to Bake", "Snack"],
-    accent: "bg-orange-100 text-orange-800",
+    variant: "Classic",
+    description: "Flaky fried pastry dough filled with savory or sweet fillings. A staple of Latin American street food, perfect for cafés and restaurants.",
+    image: "/products/kd/pastelitos.webp",
+    tags: ["Frozen", "Ready to Fry", "Snack"],
   },
   {
-    id: "pan-de-jamon",
+    id: "kd-empanadas-ven",
+    name: "Empanadas Venezolanas",
+    variant: "Venezuelan Style",
+    description: "Corn-dough empanadas with authentic Venezuelan-style fillings. Crispy outside, hearty inside — a top seller for food service operators.",
+    image: "/products/kd/empanadas-venezolanas.webp",
+    tags: ["Frozen", "Ready to Fry", "Savory"],
+  },
+  {
+    id: "kd-empanadas-arg",
+    name: "Empanadas Argentinas",
+    variant: "Argentinian Style",
+    description: "Baked wheat-dough empanadas with classic Argentinian fillings. Ideal for wholesale restaurant menus and catering service.",
+    image: "/products/kd/empanadas-argentinas.webp",
+    tags: ["Frozen", "Ready to Bake", "Savory"],
+  },
+  {
+    id: "kd-cachitos",
+    name: "Cachitos",
+    variant: "Venezuelan",
+    description: "Soft rolled bread dough filled with ham and cheese — Venezuela's most beloved breakfast item, now available for wholesale food service.",
+    image: "/products/kd/cachitos.webp",
+    tags: ["Frozen", "Ready to Bake", "Breakfast"],
+  },
+  {
+    id: "kd-tequenos",
+    name: "Tequeños",
+    variant: "Cheese",
+    description: "Golden cheese sticks wrapped in bread dough. A crowd-pleasing snack and appetizer served at restaurants, events, and cafés.",
+    image: "/products/kd/tequenos.webp",
+    tags: ["Frozen", "Fry or Bake", "Appetizer"],
+  },
+  {
+    id: "kd-pan-de-jamon",
     name: "Pan de Jamón",
     variant: "Classic",
-    origin: "Venezuelan",
-    category: "cachitos" as Category,
-    description: "Traditional Venezuelan Christmas bread filled with ham, olives, and raisins — now available year-round for food service wholesale.",
-    servingSize: "Per loaf",
-    image: null,
-    tags: ["Frozen", "Ready to Bake", "Holiday"],
-    accent: "bg-amber-100 text-amber-800",
+    description: "Traditional Venezuelan-style ham bread, rolled with ham and olives. Available year-round for restaurants and specialty food retailers.",
+    image: "/products/kd/pan-de-jamon.webp",
+    tags: ["Frozen", "Ready to Bake", "Specialty"],
+  },
+];
+
+const pannaProducts = [
+  {
+    id: "panna-cachito-ham",
+    name: "Cachito",
+    variant: "Ham & Cheese",
+    description: "Finely chopped ham and mozzarella stuffed in soft, golden bread dough. A Venezuelan breakfast staple. 1 piece (170g).",
+    image: "/products/cachito-ham-cheese.jpg",
+    tags: ["Frozen", "Ready to Bake", "Breakfast"],
   },
   {
-    id: "bakery-items",
-    name: "Bakery Items",
-    variant: "Assorted",
-    origin: "Latin American",
-    category: "colombian" as Category,
-    description: "A rotating selection of Latin bakery products available for wholesale. Ideal for supermarkets, cafés, and food service operators seeking variety.",
-    servingSize: "Per case",
-    image: null,
-    tags: ["Frozen", "Wholesale", "Variety"],
-    accent: "bg-lime-100 text-lime-800",
+    id: "panna-cachito-cheese",
+    name: "Cachito",
+    variant: "Cheese",
+    description: "Soft bread dough filled with rich melted cheese. Light and flaky — perfect for breakfast service or café menus. 1 piece (170g).",
+    image: "/products/cachito-cheese.jpg",
+    tags: ["Frozen", "Ready to Bake", "Breakfast"],
+  },
+  {
+    id: "panna-tequeno-cheese",
+    name: "Tequeño",
+    variant: "Cheese",
+    description: "White cheese wrapped in golden puff pastry, fried or baked to crispy perfection. 12 pieces per container, 74g each.",
+    image: "/products/tequeno-cheese.jpg",
+    tags: ["Frozen", "Fry or Bake", "Snack"],
+  },
+  {
+    id: "panna-tequeno-guava",
+    name: "Tequeño",
+    variant: "Guava & Cheese",
+    description: "White cheese and sweet guava paste in puff pastry — a sweet-savory combination beloved across Latin America. 74g each.",
+    image: "/products/tequeno-guava-cheese.jpg",
+    tags: ["Frozen", "Fry or Bake", "Snack"],
+  },
+  {
+    id: "panna-emp-arg-beef",
+    name: "Empanada",
+    variant: "Argentinian Beef",
+    description: "Half-moon dough stuffed with ground beef, green onions, and hard-boiled eggs. 4 pieces per container, 85g each.",
+    image: "/products/empanada-argentinian-beef.jpg",
+    tags: ["Frozen", "Ready to Bake", "Savory"],
+  },
+  {
+    id: "panna-emp-arg-chicken",
+    name: "Empanada",
+    variant: "Argentinian Chicken",
+    description: "Flaky pastry filled with seasoned shredded chicken. A lighter option for food service and catering menus. 85g each.",
+    image: "/products/empanada-argentinian-chicken.jpg",
+    tags: ["Frozen", "Ready to Bake", "Savory"],
+  },
+  {
+    id: "panna-emp-arg-spinach",
+    name: "Empanada",
+    variant: "Argentinian Spinach",
+    description: "Golden pastry stuffed with seasoned spinach filling — a vegetarian-friendly option for diverse menus. 85g each.",
+    image: "/products/empanada-argentinian-spinach.jpg",
+    tags: ["Frozen", "Ready to Bake", "Vegetarian"],
+  },
+  {
+    id: "panna-emp-ven-cheese",
+    name: "Empanada",
+    variant: "Venezuelan Cheese",
+    description: "Corn dough empanada filled with white cheese — a Venezuelan staple for breakfast and all-day menus.",
+    image: "/products/empanada-venezolana-cheese.jpg",
+    tags: ["Frozen", "Fry or Bake", "Breakfast"],
+  },
+  {
+    id: "panna-emp-ven-chicken",
+    name: "Empanada",
+    variant: "Venezuelan Chicken",
+    description: "Corn dough filled with tender seasoned chicken. Versatile and crowd-pleasing for any meal service.",
+    image: "/products/empanada-venezolana-chicken.jpg",
+    tags: ["Frozen", "Fry or Bake", "Savory"],
+  },
+  {
+    id: "panna-emp-ven-beef",
+    name: "Empanada",
+    variant: "Venezuelan Ground Beef",
+    description: "Corn dough stuffed with seasoned ground beef. Rich and satisfying — a top seller for restaurants and food trucks.",
+    image: "/products/empanada-venezolana-beef.jpg",
+    tags: ["Frozen", "Fry or Bake", "Savory"],
+  },
+  {
+    id: "panna-emp-ven-shredded",
+    name: "Empanada",
+    variant: "Venezuelan Shredded Beef",
+    description: "Corn dough with slow-cooked shredded beef. Bold flavor, ideal for wholesale volume food service.",
+    image: "/products/empanada-venezolana-shredded-beef.jpg",
+    tags: ["Frozen", "Fry or Bake", "Savory"],
+  },
+  {
+    id: "panna-pandebono",
+    name: "Pandebono",
+    variant: "Classic Cheese",
+    description: "White cheese and tapioca baked into puffy buns. Crispy outside, light and chewy inside. 4 pieces per container, 57g each.",
+    image: "/products/pandebono.jpg",
+    tags: ["Frozen", "Ready to Bake", "Bread"],
+  },
+  {
+    id: "panna-emp-colombiana",
+    name: "Empanada",
+    variant: "Colombian Style",
+    description: "Colombian-style corn empanada with a distinct flavor profile. Perfect for authentic Latin menus and specialty programs.",
+    image: "/products/empanada-colombiana.jpg",
+    tags: ["Frozen", "Fry or Bake", "Savory"],
   },
 ];
 
-const filters: { label: string; value: Category }[] = [
-  { label: "All Products", value: "all" },
-  { label: "Cachitos", value: "cachitos" },
-  { label: "Tequeños", value: "tequenos" },
-  { label: "Empanadas", value: "empanadas" },
-  { label: "Colombian", value: "colombian" },
-];
+const productsByPartner: Record<Partner, typeof kdProducts> = {
+  kd: kdProducts,
+  panna: pannaProducts,
+};
 
 export function Products() {
-  const [active, setActive] = useState<Category>("all");
-
-  const filtered = active === "all" ? products : products.filter((p) => p.category === active);
+  const [activePartner, setActivePartner] = useState<Partner>("kd");
+  const p = partners[activePartner];
+  const products = productsByPartner[activePartner];
 
   return (
     <section id="products" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -222,99 +209,130 @@ export function Products() {
           className="text-center mb-12"
         >
           <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-3 px-3 py-1 bg-primary/10 rounded-full">
-            PANNA Manufacturing Products
+            Wholesale Catalog
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our Product Catalog
+            Latin Food Products Available for Wholesale
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Premium frozen Latin bakery products distributed wholesale across South Florida. All items are available in food service case quantities.
+            Browse by manufacturing partner. All products are available in food service case quantities for restaurants, cafés, supermarkets, and wholesale buyers.
           </p>
         </motion.div>
 
-        {/* Filter tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {filters.map((f) => (
-            <button
-              key={f.value}
-              data-testid={`filter-${f.value}`}
-              onClick={() => setActive(f.value)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
-                active === f.value
-                  ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                  : "bg-white text-muted-foreground border-border hover:border-primary/50 hover:text-foreground"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
+        {/* Partner Switcher */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          {(Object.keys(partners) as Partner[]).map((key) => {
+            const partner = partners[key];
+            const isActive = activePartner === key;
+            return (
+              <button
+                key={key}
+                data-testid={`tab-partner-${key}`}
+                onClick={() => setActivePartner(key)}
+                className={`group flex items-center gap-3 px-6 py-4 rounded-2xl border-2 transition-all duration-300 text-left ${
+                  isActive
+                    ? `${partner.borderActive} ${partner.bgLight} shadow-md`
+                    : "border-border bg-white hover:border-border/70 hover:shadow-sm"
+                }`}
+              >
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${partner.accentFrom} ${partner.accentTo} flex items-center justify-center shrink-0`}>
+                  <span className="text-white font-black text-xs">{key === "kd" ? "K&D" : "P"}</span>
+                </div>
+                <div className="text-left">
+                  <div className="font-bold text-foreground text-sm leading-tight">{partner.name}</div>
+                  <div className="text-xs text-muted-foreground leading-tight mt-0.5">{partner.tagline}</div>
+                </div>
+                {isActive && (
+                  <span className={`ml-auto text-xs font-semibold px-2 py-0.5 rounded-full ${partner.badgeBg} ${partner.badgeText}`}>
+                    Viewing
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Product grid */}
-        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((product, index) => (
-              <motion.div
-                key={product.id}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3, delay: index * 0.04 }}
-                data-testid={`card-product-${product.id}`}
-                className="bg-card rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all duration-300 group overflow-hidden flex flex-col"
+        {/* Active partner header */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activePartner}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className={`flex items-center justify-between mb-8 p-5 rounded-2xl border ${p.bgLight} border-border`}>
+              <div>
+                <h3 className="text-lg font-bold text-foreground">{p.name}</h3>
+                <p className="text-sm text-muted-foreground">{products.length} products available for wholesale</p>
+              </div>
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid={`link-partner-catalog-${activePartner}`}
+                className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
               >
-                <div className="aspect-[4/3] bg-muted relative overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={`${product.name} ${product.variant}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-semibold text-foreground shadow-sm">
-                    Available Wholesale
-                  </div>
-                  <div className="absolute top-3 right-3 bg-primary/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-semibold text-white shadow-sm">
-                    {product.origin}
-                  </div>
-                </div>
+                Visit partner site <ExternalLink size={13} />
+              </a>
+            </div>
 
-                <div className="p-5 flex flex-col flex-1">
-                  <div className="mb-1">
-                    <h3 className="text-base font-bold text-foreground leading-tight">{product.name}</h3>
-                    <p className={`text-xs font-semibold px-2 py-0.5 rounded-full inline-block mt-1 ${product.accent}`}>
-                      {product.variant}
-                    </p>
+            {/* Product grid */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              {products.map((product, index) => (
+                <motion.div
+                  key={product.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: index * 0.05 }}
+                  data-testid={`card-product-${product.id}`}
+                  className="bg-card rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all duration-300 group overflow-hidden flex flex-col"
+                >
+                  <div className="aspect-[4/3] bg-muted relative overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={`${product.name} ${product.variant}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-semibold text-foreground shadow-sm">
+                      Available Wholesale
+                    </div>
                   </div>
 
-                  <p className="text-sm text-muted-foreground mt-2 mb-4 flex-1 leading-relaxed line-clamp-3">
-                    {product.description}
-                  </p>
-
-                  <div className="border-t border-border pt-3 flex flex-wrap gap-1.5">
-                    {product.tags.map((tag, ti) => (
-                      <span key={ti} className="text-xs px-2 py-0.5 rounded bg-secondary text-muted-foreground">
-                        {tag}
+                  <div className="p-4 flex flex-col flex-1">
+                    <div className="mb-2">
+                      <h3 className="text-base font-bold text-foreground leading-tight">{product.name}</h3>
+                      <span className={`text-xs font-semibold px-2 py-0.5 rounded-full inline-block mt-1 ${p.badgeBg} ${p.badgeText}`}>
+                        {product.variant}
                       </span>
-                    ))}
-                    <span className="text-xs px-2 py-0.5 rounded bg-secondary text-muted-foreground ml-auto">
-                      {product.servingSize}
-                    </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-2 mb-3 flex-1 leading-relaxed line-clamp-3">
+                      {product.description}
+                    </p>
+                    <div className="border-t border-border pt-3 flex flex-wrap gap-1.5">
+                      {product.tags.map((tag, ti) => (
+                        <span key={ti} className="text-xs px-2 py-0.5 rounded bg-secondary text-muted-foreground">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </AnimatePresence>
 
+        {/* Bottom note */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-14 bg-secondary/50 rounded-2xl p-8 border border-border text-center"
         >
-          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-            All products are manufactured by <strong className="text-foreground">PANNA Manufacturing</strong> — an SQF-certified, USDA-approved Latin food producer. Available in food service case quantities for restaurants, cafés, supermarkets, and wholesale buyers.
+          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+            Oasis Distribution is an independent distributor. Products are manufactured by <strong className="text-foreground">K&D Latin Food</strong> and <strong className="text-foreground">PANNA Manufacturing</strong>. Product availability may vary — contact our sales team for current inventory and pricing.
           </p>
         </motion.div>
       </div>
