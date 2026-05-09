@@ -186,14 +186,14 @@ export function Contact() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="cachitos">Cachitos</SelectItem>
-                          <SelectItem value="tequenos">Tequeños</SelectItem>
-                          <SelectItem value="empanadas">Empanadas</SelectItem>
-                          <SelectItem value="pandebonos">Pandebonos</SelectItem>
-                          <SelectItem value="yucabites">Yuca Bites</SelectItem>
+                          <SelectItem value="cachitos-ham-cheese">Cachitos — Ham &amp; Cheese</SelectItem>
+                          <SelectItem value="cachitos-cheese">Cachitos — Cheese</SelectItem>
+                          <SelectItem value="tequenos-cheese">Tequeños — Cheese</SelectItem>
+                          <SelectItem value="tequenos-guava-cheese">Tequeños — Guava &amp; Cheese</SelectItem>
+                          <SelectItem value="empanadas-beef">Empanadas — Argentinian Beef</SelectItem>
+                          <SelectItem value="pandebono">Pandebono — Classic Cheese</SelectItem>
                           <SelectItem value="arepas">Arepas</SelectItem>
-                          <SelectItem value="sauces">Sauces</SelectItem>
-                          <SelectItem value="pastries">Pastries</SelectItem>
+                          <SelectItem value="yuca-bites">Yuca Bites</SelectItem>
                           <SelectItem value="multiple">Multiple Products</SelectItem>
                         </SelectContent>
                       </Select>
