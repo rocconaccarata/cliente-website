@@ -37,21 +37,6 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Company name */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-4"
-        >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase leading-none">
-            Oasis
-          </h1>
-          <p className="text-lg md:text-2xl font-semibold tracking-[0.3em] text-primary/90 uppercase mt-1">
-            Distribution
-          </p>
-        </motion.div>
-
         {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
