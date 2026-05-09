@@ -34,7 +34,7 @@ export const translations = {
       stats: [
         { value: "43+", label: "Products in Catalog" },
         { value: "8+", label: "Years in Business" },
-        { value: "South Florida", label: "Serving Region" },
+        { value: "Ft. Laud. – Florida City", label: "Delivery Area" },
       ],
       cardText:
         "Dedicated to helping your food service business succeed with consistent, quality products.",
@@ -178,6 +178,36 @@ export const translations = {
         description: "Your inquiry details are pre-filled. Just hit Send.",
       },
     },
+    faq: {
+      badge: "FAQ",
+      heading: "Frequently Asked Questions",
+      items: [
+        {
+          q: "Do you offer delivery?",
+          a: "Yes. We offer free delivery on orders of $250 or more. Orders below $250 may require pickup or a delivery fee — contact us for details.",
+        },
+        {
+          q: "What is your delivery area?",
+          a: "We deliver throughout South Florida, from Florida City in the south to Fort Lauderdale in the north.",
+        },
+        {
+          q: "What payment methods do you accept?",
+          a: "We accept check and Zelle only. Payment is required at time of delivery or prior to pickup.",
+        },
+        {
+          q: "What is the order cutoff time?",
+          a: "Orders must be placed by 4:00 PM for same-day dispatch. Orders placed after 4:00 PM will be scheduled for the next available delivery.",
+        },
+        {
+          q: "Is there a minimum order amount?",
+          a: "Yes. The minimum order for free delivery is $250. We encourage you to plan your orders to meet this threshold for the best value.",
+        },
+        {
+          q: "How do I place an order?",
+          a: "You can reach us by phone, WhatsApp at (786) 277-5660, or by filling out the contact form on this page. Our team will confirm availability and delivery date.",
+        },
+      ],
+    },
     footer: {
       quickLinks: "Quick Links",
       partners: "Manufacturing Partners",
@@ -192,6 +222,7 @@ export const translations = {
         partners: "Our Partners",
         services: "Services",
         products: "Products",
+        faq: "FAQ",
         contact: "Contact",
       },
       serviceList: [
@@ -238,7 +269,7 @@ export const translations = {
       stats: [
         { value: "43+", label: "Productos en Catálogo" },
         { value: "8+", label: "Años en el Negocio" },
-        { value: "Sur de Florida", label: "Región de Servicio" },
+        { value: "Ft. Laud. – Florida City", label: "Área de Entrega" },
       ],
       cardText:
         "Dedicados a ayudar a tu negocio de alimentos a tener éxito con productos consistentes y de calidad.",
@@ -382,6 +413,36 @@ export const translations = {
         description: "Los datos de tu consulta están pre-llenados. Solo haz clic en Enviar.",
       },
     },
+    faq: {
+      badge: "Preguntas Frecuentes",
+      heading: "Preguntas Frecuentes",
+      items: [
+        {
+          q: "¿Hacen entregas a domicilio?",
+          a: "Sí. Ofrecemos entrega gratuita en pedidos de $250 o más. Para pedidos menores, puede ser necesario recoger en nuestro almacén o se aplicará un cargo de entrega — contáctanos para más detalles.",
+        },
+        {
+          q: "¿Cuál es el área de entrega?",
+          a: "Entregamos en todo el sur de Florida, desde Florida City al sur hasta Fort Lauderdale al norte.",
+        },
+        {
+          q: "¿Qué métodos de pago aceptan?",
+          a: "Aceptamos cheque y Zelle únicamente. El pago se realiza al momento de la entrega o antes del retiro.",
+        },
+        {
+          q: "¿Hasta qué hora puedo hacer mi pedido?",
+          a: "Los pedidos deben realizarse antes de las 4:00 PM para despacho el mismo día. Los pedidos recibidos después de las 4:00 PM se programarán para la próxima entrega disponible.",
+        },
+        {
+          q: "¿Hay un monto mínimo de pedido?",
+          a: "Sí. El monto mínimo para entrega gratuita es de $250. Te recomendamos planificar tus pedidos para alcanzar este monto y obtener el mejor valor.",
+        },
+        {
+          q: "¿Cómo hago mi pedido?",
+          a: "Puedes contactarnos por teléfono, WhatsApp al (786) 277-5660, o completando el formulario de contacto en esta página. Nuestro equipo confirmará disponibilidad y fecha de entrega.",
+        },
+      ],
+    },
     footer: {
       quickLinks: "Enlaces Rápidos",
       partners: "Socios Manufactureros",
@@ -396,6 +457,7 @@ export const translations = {
         partners: "Nuestros Socios",
         services: "Servicios",
         products: "Productos",
+        faq: "Preguntas Frecuentes",
         contact: "Contacto",
       },
       serviceList: [

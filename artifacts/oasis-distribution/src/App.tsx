@@ -12,7 +12,7 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 import { Quality } from "@/components/Quality";
-import { CatalogCTA } from "@/components/CatalogCTA";
+import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -39,7 +39,7 @@ function Home() {
         <About />
         <Services />
         <Quality />
-        <CatalogCTA />
+        <FAQ />
         <Contact />
       </main>
       <Footer />

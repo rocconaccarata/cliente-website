@@ -1,3 +1,4 @@
+import { Instagram } from "lucide-react";
 import { useLang } from "@/contexts/LanguageContext";
 
 export function Footer() {
@@ -20,9 +21,18 @@ export function Footer() {
                 className="h-12 object-contain"
               />
             </div>
-            <p className="text-muted text-sm leading-relaxed max-w-xs">
+            <p className="text-muted text-sm leading-relaxed max-w-xs mb-5">
               Florida-based Latin food distribution for restaurants, cafés, markets, and wholesale clients.
             </p>
+            <a
+              href="https://www.instagram.com/oasisdistribution"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-muted hover:text-white transition-colors text-sm"
+            >
+              <Instagram size={18} />
+              @oasisdistribution
+            </a>
           </div>
 
           <div>
@@ -31,6 +41,7 @@ export function Footer() {
               <li><button onClick={() => scrollTo("about")} className="text-muted hover:text-white transition-colors">{t.footer.nav.about}</button></li>
               <li><button onClick={() => scrollTo("services")} className="text-muted hover:text-white transition-colors">{t.footer.nav.services}</button></li>
               <li><button onClick={() => scrollTo("products")} className="text-muted hover:text-white transition-colors">{t.footer.nav.products}</button></li>
+              <li><button onClick={() => scrollTo("faq")} className="text-muted hover:text-white transition-colors">{t.footer.nav.faq}</button></li>
               <li><button onClick={() => scrollTo("contact")} className="text-muted hover:text-white transition-colors">{t.footer.nav.contact}</button></li>
             </ul>
           </div>
