@@ -109,12 +109,23 @@ export function Hero() {
           <Logo3D />
         </motion.div>
 
+        {/* Slogan */}
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-tight"
+        >
+          Authentic Flavors.{" "}
+          <span className="text-primary">Reliable Supply.</span>
+        </motion.h1>
+
         {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="text-base md:text-lg text-white/75 max-w-xl mx-auto mb-10 leading-relaxed"
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="text-sm md:text-base text-white/65 max-w-lg mx-auto mb-10 leading-relaxed"
         >
           Your Latin food wholesale partner in Florida — supplying restaurants, cafés, markets, and food service operators.
         </motion.p>
