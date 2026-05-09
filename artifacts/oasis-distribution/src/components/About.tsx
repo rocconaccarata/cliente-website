@@ -1,21 +1,21 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
+const features = [
+  "Florida-based Latin food distributor",
+  "Frozen foods and Latin bakery products",
+  "Food service and wholesale clients",
+  "Reliable partner network",
+  "Dependable supply and product variety",
+];
+
+const stats = [
+  { label: "Product Categories", value: "10+" },
+  { label: "Serving Region", value: "South Florida" },
+  { label: "Client Base", value: "Food Service" },
+];
+
 export function About() {
-  const features = [
-    "Cold-chain frozen product expertise",
-    "Wholesale supply capabilities",
-    "B2B food service focus",
-    "Reliable delivery schedules",
-  ];
-
-  const stats = [
-    { label: "Product Categories", value: "10+" },
-    { label: "Serving Region", value: "South Florida" },
-    { label: "Client Base", value: "Food Service" },
-  ];
-
   return (
     <section id="about" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
@@ -26,16 +26,16 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-3 px-3 py-1 bg-primary/10 rounded-full">
+              Who We Are
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Professional Distribution for Your Business
+              Reliable Latin Food Distribution for Food Service Businesses
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Oasis Distribution is a Florida-based Latin food distribution
-              company. We are an authorized distributor of PANNA Manufacturing
-              products, bringing high-quality Latin bakery and frozen food items
-              to your establishment.
+              Oasis Distribution connects food service businesses with authentic Latin food products from established manufacturing partners. We support restaurants, cafés, markets, convenience stores, and wholesale clients with dependable supply, product variety, and professional service.
             </p>
-            
+
             <ul className="space-y-3 mb-8">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3 text-foreground">
@@ -65,7 +65,7 @@ export function About() {
             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <img
                 src="/src/assets/images/about-warehouse.png"
-                alt="Wholesale frozen boxes warehouse"
+                alt="Wholesale food distribution warehouse"
                 className="w-full h-full object-cover"
               />
             </div>

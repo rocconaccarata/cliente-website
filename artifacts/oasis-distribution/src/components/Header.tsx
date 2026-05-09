@@ -1,25 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "wouter";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+
+const navLinks = [
+  { label: "About", id: "about" },
+  { label: "Partners", id: "partners" },
+  { label: "Services", id: "services" },
+  { label: "Products", id: "products" },
+  { label: "Catalog", id: "contact" },
+  { label: "Contact", id: "contact" },
+];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
   };
 
@@ -32,8 +36,8 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <div 
-          className="flex items-center gap-3 cursor-pointer" 
+        <div
+          className="flex items-center gap-3 cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           data-testid="link-home"
         >
@@ -41,19 +45,24 @@ export function Header() {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          <button onClick={() => scrollTo("about")} className="text-sm font-medium text-foreground hover:text-primary transition-colors" data-testid="nav-about">About</button>
-          <button onClick={() => scrollTo("services")} className="text-sm font-medium text-foreground hover:text-primary transition-colors" data-testid="nav-services">Services</button>
-          <button onClick={() => scrollTo("products")} className="text-sm font-medium text-foreground hover:text-primary transition-colors" data-testid="nav-products">Products</button>
-          <button onClick={() => scrollTo("contact")} className="text-sm font-medium text-foreground hover:text-primary transition-colors" data-testid="nav-catalog">Catalog</button>
-          
+        <nav className="hidden md:flex items-center gap-7">
+          {navLinks.map((link) => (
+            <button
+              key={link.label}
+              onClick={() => scrollTo(link.id)}
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              data-testid={`nav-${link.label.toLowerCase()}`}
+            >
+              {link.label}
+            </button>
+          ))}
           <Button onClick={() => scrollTo("contact")} size="sm" data-testid="button-request-info">
             Request Wholesale Info
           </Button>
         </nav>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="md:hidden p-2 text-foreground"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           data-testid="button-mobile-menu"
@@ -64,12 +73,16 @@ export function Header() {
 
       {/* Mobile Nav */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-border shadow-lg py-4 px-4 flex flex-col gap-4">
-          <button onClick={() => scrollTo("about")} className="text-left text-base font-medium py-2 text-foreground hover:text-primary transition-colors">About</button>
-          <button onClick={() => scrollTo("services")} className="text-left text-base font-medium py-2 text-foreground hover:text-primary transition-colors">Services</button>
-          <button onClick={() => scrollTo("products")} className="text-left text-base font-medium py-2 text-foreground hover:text-primary transition-colors">Products</button>
-          <button onClick={() => scrollTo("contact")} className="text-left text-base font-medium py-2 text-foreground hover:text-primary transition-colors">Catalog</button>
-          
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-border shadow-lg py-4 px-4 flex flex-col gap-3">
+          {navLinks.map((link) => (
+            <button
+              key={link.label}
+              onClick={() => scrollTo(link.id)}
+              className="text-left text-base font-medium py-2 text-foreground hover:text-primary transition-colors"
+            >
+              {link.label}
+            </button>
+          ))}
           <Button onClick={() => scrollTo("contact")} className="w-full mt-2" data-testid="button-mobile-request-info">
             Request Wholesale Info
           </Button>

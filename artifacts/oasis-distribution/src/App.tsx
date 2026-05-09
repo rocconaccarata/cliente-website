@@ -7,6 +7,7 @@ import NotFound from "@/pages/not-found";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
+import { Partners } from "@/components/Partners";
 import { Services } from "@/components/Services";
 import { Products } from "@/components/Products";
 import { Quality } from "@/components/Quality";
@@ -23,6 +24,7 @@ function Home() {
       <main>
         <Hero />
         <About />
+        <Partners />
         <Services />
         <Products />
         <Quality />

@@ -1,0 +1,171 @@
+Create a professional website for “Oasis Distribution, LLC”, a Florida-based Latin food distribution company.
+
+Oasis Distribution works with two Latin food manufacturing partners:
+1. K&D Latin Food — https://kdlatinfood.com/
+2. PANNA Manufacturing — https://www.pannatogo.com/
+
+IMPORTANT:
+Do not copy any website exactly. Create an original website inspired by professional Latin food manufacturing and distribution websites like PANNA and K&D Latin Food. Oasis Distribution must be presented as the distributor, not the manufacturer.
+
+Build with:
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Fully responsive layout
+- Clean reusable components
+- SEO-friendly homepage
+- Professional contact form UI
+- Placeholder product images if real images are not available
+
+Brand:
+- Company: Oasis Distribution
+- Category: Latin Food Distribution
+- Use the provided Oasis Distribution logo
+- Style: clean, modern, white background, light blue accents, black typography, fresh B2B food-service look
+- Audience: restaurants, cafés, bakeries, supermarkets, convenience stores, food trucks, distributors, and food service operators
+- Tone: trustworthy, wholesale, reliable, Latin food specialist
+
+Website sections:
+
+1. Header
+- Logo left
+- Navigation: Home, About, Partners, Products, Services, Catalog, Contact
+- CTA button: “Request Wholesale Info”
+
+2. Hero
+Headline:
+“Your Latin Food Distribution Partner in Florida”
+
+Subheadline:
+“Oasis Distribution supplies restaurants, cafés, markets, and food service operators with high-quality Latin frozen foods, bakery products, and wholesale food solutions from trusted manufacturing partners.”
+
+Buttons:
+- “View Products”
+- “Contact Sales”
+
+3. About
+Title:
+“Reliable Latin Food Distribution for Food Service Businesses”
+
+Text:
+“Oasis Distribution connects food service businesses with authentic Latin food products from established manufacturing partners. We support restaurants, cafés, markets, convenience stores, and wholesale clients with dependable supply, product variety, and professional service.”
+
+Mention:
+- Florida-based distributor
+- Latin frozen foods and bakery products
+- Food service and wholesale clients
+- Reliable partner network
+- Product availability may vary by manufacturer
+
+4. Manufacturing Partners
+Title:
+“Our Manufacturing Partners”
+
+Partner card 1:
+K&D Latin Food
+Description:
+“Specialized in frozen Latin foods including empanadas, pastelitos, cachitos, tequeños, and pan de jamón for restaurants, supermarkets, distributors, and cafés.”
+
+Partner card 2:
+PANNA Manufacturing
+Description:
+“Wholesale Latin bakery and frozen food manufacturer offering products such as cachitos, tequeños, empanadas, pandebonos, sauces, and food service solutions.”
+
+Disclaimer:
+“Oasis Distribution is an independent distributor and does not claim ownership of partner brands. Brand names are used only to identify manufacturing partners and product sources.”
+
+5. Services
+Create six cards:
+- Food Service Distribution
+- Wholesale Latin Bakery Products
+- Frozen Food Supply
+- Restaurant & Café Supply
+- Convenience Store Programs
+- Distributor & Market Support
+
+6. Products
+Title:
+“Latin Food Products Available for Wholesale”
+
+Create product cards:
+- Empanadas
+- Tequeños
+- Cachitos
+- Pastelitos
+- Pan de Jamón
+- Pandebonos
+- Arepas
+- Sauces
+- Yuca Bites
+- Bakery Items
+
+Each card:
+- Short description
+- “Available for wholesale”
+- Placeholder image path like /images/products/empanadas.jpg
+
+7. Quality & Logistics
+Title:
+“Built for Wholesale, Food Service, and Frozen Distribution”
+
+Mention:
+- Frozen product handling
+- Consistent supply
+- Partner-manufactured products
+- Food service packaging
+- Product variety
+- Support for restaurants, cafés, supermarkets, and distributors
+
+Do not invent certifications unless provided.
+
+8. Catalog CTA
+Title:
+“Need Product Availability or Wholesale Pricing?”
+
+Text:
+“Contact Oasis Distribution to request current product availability, wholesale pricing, and partner product catalogs.”
+
+Buttons:
+- “Request Catalog”
+- “Contact Sales”
+
+9. Contact
+Form fields:
+- Full Name
+- Business Name
+- Email
+- Phone
+- Business Type
+- Product Interest
+- Message
+
+Business info:
+Oasis Distribution, LLC
+Florida-Based Latin Food Distribution
+Serving food service and wholesale clients
+
+CTA:
+“Request Wholesale Pricing”
+
+10. Footer
+Include:
+- Logo
+- Quick links
+- Services
+- Manufacturing partners
+- Contact placeholder
+- Disclaimer:
+“Oasis Distribution is an independent distributor of Latin food products. Product availability, packaging, and specifications may vary by manufacturing partner.”
+
+Design:
+- Clean B2B look
+- Modern cards
+- Soft shadows
+- Rounded corners
+- Light blue accent color
+- White and light gray backgrounds
+- Professional spacing
+- Strong mobile design
+- Smooth hover effects
+- No lorem ipsum
+- Ready for a real Latin food distributor with no current website or Instagram

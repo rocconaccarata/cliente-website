@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,20 +20,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Phone, Mail, Building } from "lucide-react";
+import { MapPin, Mail, Building, Truck } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name is required" }),
   businessName: z.string().min(2, { message: "Business Name is required" }),
   email: z.string().email({ message: "Invalid email address" }),
   phone: z.string().min(10, { message: "Valid phone number required" }),
-  interest: z.string().min(1, { message: "Please select an interest" }),
+  businessType: z.string().min(1, { message: "Please select your business type" }),
+  interest: z.string().min(1, { message: "Please select a product interest" }),
   message: z.string().optional(),
 });
 
 export function Contact() {
   const { toast } = useToast();
-  
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,6 +42,7 @@ export function Contact() {
       businessName: "",
       email: "",
       phone: "",
+      businessType: "",
       interest: "",
       message: "",
     },
@@ -60,23 +61,26 @@ export function Contact() {
     <section id="contact" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-5 gap-12">
-          
+
           <div className="lg:col-span-2 space-y-8">
             <div>
+              <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-3 px-3 py-1 bg-primary/10 rounded-full">
+                Get In Touch
+              </span>
               <h2 className="text-3xl font-bold text-foreground mb-4">Contact Sales</h2>
               <p className="text-muted-foreground text-lg">
                 Ready to set up your wholesale account? Get in touch with our distribution team.
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-5">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                   <Building size={20} />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">Oasis Distribution, LLC</h4>
-                  <p className="text-muted-foreground">Serving South Florida food service and wholesale clients.</p>
+                  <p className="text-muted-foreground text-sm">Florida-Based Latin Food Distribution</p>
                 </div>
               </div>
 
@@ -86,7 +90,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">Location</h4>
-                  <p className="text-muted-foreground">Homestead, Florida</p>
+                  <p className="text-muted-foreground text-sm">Homestead, Florida</p>
                 </div>
               </div>
 
@@ -96,17 +100,17 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">Email</h4>
-                  <p className="text-muted-foreground">sales@oasisdistribution.com</p>
+                  <p className="text-muted-foreground text-sm">sales@oasisdistribution.com</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <Phone size={20} />
+                  <Truck size={20} />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground">Phone</h4>
-                  <p className="text-muted-foreground">Contact us for direct line</p>
+                  <h4 className="font-semibold text-foreground">Serving</h4>
+                  <p className="text-muted-foreground text-sm">Food service and wholesale clients across Florida</p>
                 </div>
               </div>
             </div>
@@ -114,8 +118,8 @@ export function Contact() {
 
           <div className="lg:col-span-3 bg-card rounded-2xl p-8 border border-border shadow-sm">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                <div className="grid md:grid-cols-2 gap-5">
                   <FormField
                     control={form.control}
                     name="name"
@@ -144,7 +148,7 @@ export function Contact() {
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-5">
                   <FormField
                     control={form.control}
                     name="email"
@@ -175,6 +179,35 @@ export function Contact() {
 
                 <FormField
                   control={form.control}
+                  name="businessType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Business Type</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger data-testid="select-business-type">
+                            <SelectValue placeholder="Select your business type" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="restaurant">Restaurant</SelectItem>
+                          <SelectItem value="cafe">Café / Coffee Shop</SelectItem>
+                          <SelectItem value="bakery">Bakery</SelectItem>
+                          <SelectItem value="supermarket">Supermarket / Grocery</SelectItem>
+                          <SelectItem value="convenience">Convenience Store</SelectItem>
+                          <SelectItem value="food-truck">Food Truck</SelectItem>
+                          <SelectItem value="distributor">Distributor</SelectItem>
+                          <SelectItem value="catering">Catering Company</SelectItem>
+                          <SelectItem value="other">Other Food Service</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
                   name="interest"
                   render={({ field }) => (
                     <FormItem>
@@ -197,8 +230,13 @@ export function Contact() {
                           <SelectItem value="empanada-ven-chicken">Empanada — Venezuelan Chicken</SelectItem>
                           <SelectItem value="empanada-ven-beef">Empanada — Venezuelan Ground Beef</SelectItem>
                           <SelectItem value="empanada-ven-shredded">Empanada — Venezuelan Shredded Beef</SelectItem>
-                          <SelectItem value="pandebono">Pandebono — Classic Cheese</SelectItem>
-                          <SelectItem value="empanada-colombiana">Empanada — Colombian Style</SelectItem>
+                          <SelectItem value="pandebono">Pandebono</SelectItem>
+                          <SelectItem value="pastelitos">Pastelitos</SelectItem>
+                          <SelectItem value="pan-de-jamon">Pan de Jamón</SelectItem>
+                          <SelectItem value="arepas">Arepas</SelectItem>
+                          <SelectItem value="yuca-bites">Yuca Bites</SelectItem>
+                          <SelectItem value="sauces">Sauces</SelectItem>
+                          <SelectItem value="bakery-items">Bakery Items</SelectItem>
                           <SelectItem value="multiple">Multiple Products</SelectItem>
                         </SelectContent>
                       </Select>
@@ -212,12 +250,12 @@ export function Contact() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Additional Details (Optional)</FormLabel>
+                      <FormLabel>Message (Optional)</FormLabel>
                       <FormControl>
-                        <Textarea 
-                          placeholder="Tell us about your volume needs or specific questions..." 
-                          className="resize-none min-h-[120px]"
-                          {...field} 
+                        <Textarea
+                          placeholder="Tell us about your volume needs, delivery frequency, or any specific questions..."
+                          className="resize-none min-h-[110px]"
+                          {...field}
                           data-testid="textarea-message"
                         />
                       </FormControl>
