@@ -38,7 +38,6 @@ export function Header() {
     { label: t.header.about, id: "about" },
     { label: t.header.services, id: "services" },
     { label: t.header.products, id: "products" },
-    { label: t.header.catalog, id: "catalog" },
     { label: t.header.contact, id: "contact" },
   ];
 
