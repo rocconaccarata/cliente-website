@@ -22,7 +22,6 @@ export function Header() {
 
   const navLinks = [
     { label: t.header.about, id: "about" },
-    { label: t.header.partners, id: "partners" },
     { label: t.header.services, id: "services" },
     { label: t.header.products, id: "products" },
     { label: t.header.catalog, id: "catalog" },
