@@ -1,0 +1,99 @@
+Build a modern responsive website for “Oasis Distribution, LLC”, a Latin food distribution company in Florida and distributor of PANNA Manufacturing products.
+
+IMPORTANT:
+Do not copy pannatogo.com exactly. Create an original website inspired by the structure: B2B food distribution, wholesale catalog, food service, private label support, Latin food program, and contact lead generation.
+
+Brand:
+- Company name: Oasis Distribution
+- Logo: use the provided Oasis Distribution Latin Food logo
+- Style: clean, professional, fresh, white background, light blue accents from the logo, black text, modern food distributor look
+- Audience: restaurants, cafés, bakeries, supermarkets, convenience stores, food service operators, distributors
+- Tone: trustworthy, B2B, professional, Latin food specialist
+
+Tech:
+- Use Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Fully responsive
+- Clean component structure
+- No backend required yet, but create a contact form UI
+- Use placeholder food images if needed
+- SEO-friendly copy
+
+Pages/sections:
+1. Header
+   - Logo left
+   - Navigation: About, Services, Products, Catalog, Contact
+   - CTA button: Request Wholesale Info
+
+2. Hero section
+   - Headline: “Your Latin Food Distribution Partner in Florida”
+   - Subheadline: “Supplying restaurants, cafés, markets, and food service operators with high-quality Latin bakery and frozen food products.”
+   - CTA buttons: “View Products” and “Contact Sales”
+   - Add hero image area with Latin bakery/frozen food/product boxes
+
+3. About section
+   - Explain Oasis Distribution as a Florida-based Latin food distributor
+   - Mention it distributes PANNA Manufacturing products without pretending to be PANNA
+   - Highlight reliability, cold-chain/frozen products, wholesale support, and food service focus
+
+4. Services section with cards:
+   - Food Service Distribution
+   - Wholesale Latin Bakery Products
+   - Convenience Store Latin Food Program
+   - Restaurant & Café Supply
+   - Private Label / Brand Support
+   - Frozen Product Logistics
+
+5. Products section
+   Create product category cards:
+   - Cachitos
+   - Tequeños
+   - Empanadas
+   - Pandebonos
+   - Yuca Bites
+   - Arepas
+   - Sauces
+   - Pastries
+   Each card should have short description, “Available wholesale”, and placeholder image.
+
+6. Quality section
+   - “Built for food service standards”
+   - Mention product consistency, frozen storage, reliable supply, and professional distribution.
+   - Avoid claiming certifications unless provided by Oasis. You may say: “Products sourced from established manufacturing partners.”
+
+7. Catalog CTA section
+   - “Need the wholesale catalog?”
+   - Button: “Request Catalog”
+   - Secondary text: “Our team can help you choose the right products for your business.”
+
+8. Contact section
+   - Form fields: Name, Business Name, Email, Phone, Product Interest, Message
+   - Add company info:
+     Oasis Distribution, LLC
+     Homestead, Florida
+     Serving South Florida food service and wholesale clients
+   - CTA: “Request Wholesale Pricing”
+
+9. Footer
+   - Logo
+   - Quick links
+   - Contact placeholder
+   - Disclaimer: “Oasis Distribution is an independent distributor of Latin food products. Product availability may vary.”
+
+Design requirements:
+- Premium but simple B2B look
+- Rounded cards, soft shadows, clean spacing
+- Light blue accents from logo
+- Food-focused imagery
+- Strong mobile layout
+- Include smooth hover effects
+- Use realistic content, not lorem ipsum
+- Make the site feel ready for a real distributor with no Instagram or current website
+
+Deliver:
+- Complete Next.js/Tailwind code
+- Reusable components
+- Professional homepage
+- Use placeholder image paths like /images/products/tequenos.jpg
+- Add clear comments where images/logo should be replaced

@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Oasis Distribution"
+version = "1.0.0"
+id = "artifacts/oasis-distribution"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21109
+
+[services.development]
+run = "pnpm --filter @workspace/oasis-distribution run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/oasis-distribution", "run", "build" ]
+publicDir = "artifacts/oasis-distribution/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21109"
+BASE_PATH = "/"

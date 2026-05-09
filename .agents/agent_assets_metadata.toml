@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "Jp_A-9arCPNRKrKgc_Yd3"
+uri = "file://artifacts/oasis-distribution/src/assets/images/hero-food.png"
+type = "image"
+title = "Latin bakery products hero"
+
+[[generated]]
+id = "awP9jg-TZVttVqIHL5VMK"
+uri = "file://artifacts/oasis-distribution/src/assets/images/about-warehouse.png"
+type = "image"
+title = "Wholesale frozen boxes warehouse"
+
+[[generated]]
+id = "GOEMUM5D8IGeoe2cvVaI6"
+uri = "file://artifacts/oasis-distribution/src/assets/images/product-tequenos.png"
+type = "image"
+title = "Golden tequeños"
+
+[[generated]]
+id = "9bAUdXcswjx2Ve9h3o7Fc"
+uri = "file://artifacts/oasis-distribution/src/assets/images/product-empanadas.png"
+type = "image"
+title = "Golden empanadas"
+
+[[generated]]
+id = "OAPPzs-jDMDlHRC52NfRf"
+uri = "file://artifacts/oasis-distribution/src/assets/images/product-arepas.png"
+type = "image"
+title = "Traditional arepas"
