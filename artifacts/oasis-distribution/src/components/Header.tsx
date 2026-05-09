@@ -31,17 +31,21 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         isScrolled
-          ? "bg-white/90 backdrop-blur-md border-border shadow-sm py-3"
-          : "bg-white border-transparent py-4"
+          ? "bg-white/90 backdrop-blur-md border-border shadow-sm py-2"
+          : "bg-white border-transparent py-3"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <div
-          className="flex items-center gap-3 cursor-pointer"
+          className="flex items-center gap-2 cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           data-testid="link-home"
         >
-          <img src="/oasis-logo.jpg" alt="Oasis Distribution Logo" className="h-10 md:h-12 object-contain" />
+          <img src="/oasis-logo.jpg" alt="Oasis Distribution Logo" className="h-16 md:h-20 w-auto object-contain" />
+          <div className="flex flex-col leading-tight">
+            <span className="text-xl md:text-2xl font-black tracking-tight text-foreground uppercase">Oasis</span>
+            <span className="text-xs md:text-sm font-semibold tracking-widest text-primary uppercase">Distribution</span>
+          </div>
         </div>
 
         {/* Desktop Nav */}
