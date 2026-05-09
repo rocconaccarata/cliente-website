@@ -41,11 +41,7 @@ export function Header() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           data-testid="link-home"
         >
-          <img src="/oasis-logo.jpg" alt="Oasis Distribution Logo" className="h-16 md:h-20 w-auto object-contain" />
-          <div className="flex flex-col leading-tight">
-            <span className="text-xl md:text-2xl font-black tracking-tight text-foreground uppercase">Oasis</span>
-            <span className="text-xs md:text-sm font-semibold tracking-widest text-primary uppercase">Distribution</span>
-          </div>
+          <img src="/oasis-logo.jpg" alt="Oasis Distribution Logo" className="h-12 md:h-14 w-auto object-contain" />
         </div>
 
         {/* Desktop Nav */}
