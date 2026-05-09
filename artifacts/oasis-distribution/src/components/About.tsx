@@ -1,21 +1,10 @@
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
-
-const features = [
-  "Florida-based Latin food distributor",
-  "Frozen foods and Latin bakery products",
-  "Food service and wholesale clients",
-  "Reliable partner network",
-  "Dependable supply and product variety",
-];
-
-const stats = [
-  { label: "Products in Catalog", value: "43+" },
-  { label: "Manufacturing Partners", value: "2" },
-  { label: "Serving Region", value: "South Florida" },
-];
+import { useLang } from "@/contexts/LanguageContext";
 
 export function About() {
+  const { t } = useLang();
+
   return (
     <section id="about" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
@@ -27,17 +16,17 @@ export function About() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-3 px-3 py-1 bg-primary/10 rounded-full">
-              Who We Are
+              {t.about.badge}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Reliable Latin Food Distribution for Food Service Businesses
+              {t.about.heading}
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Oasis Distribution connects food service businesses with authentic Latin food products from established manufacturing partners. We support restaurants, cafés, markets, convenience stores, and wholesale clients with dependable supply, product variety, and professional service.
+              {t.about.paragraph}
             </p>
 
             <ul className="space-y-3 mb-8">
-              {features.map((feature, index) => (
+              {t.about.features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3 text-foreground">
                   <CheckCircle2 className="text-primary h-5 w-5 shrink-0" />
                   <span>{feature}</span>
@@ -46,7 +35,7 @@ export function About() {
             </ul>
 
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border">
-              {stats.map((stat, index) => (
+              {t.about.stats.map((stat, index) => (
                 <div key={index}>
                   <div className="text-xl md:text-2xl font-bold text-foreground mb-1">{stat.value}</div>
                   <div className="text-sm text-muted-foreground leading-tight">{stat.label}</div>
@@ -71,7 +60,7 @@ export function About() {
             </div>
             <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border border-border max-w-[240px]">
               <p className="text-sm font-semibold text-foreground">
-                Dedicated to helping your food service business succeed with consistent, quality products.
+                {t.about.cardText}
               </p>
             </div>
           </motion.div>

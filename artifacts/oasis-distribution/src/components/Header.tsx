@@ -1,17 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { label: "About", id: "about" },
-  { label: "Partners", id: "partners" },
-  { label: "Services", id: "services" },
-  { label: "Products", id: "products" },
-  { label: "Catalog", id: "contact" },
-  { label: "Contact", id: "contact" },
-];
+import { useLang } from "@/contexts/LanguageContext";
 
 export function Header() {
+  const { lang, setLang, t } = useLang();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -26,6 +19,15 @@ export function Header() {
     if (el) el.scrollIntoView({ behavior: "smooth" });
     setMobileMenuOpen(false);
   };
+
+  const navLinks = [
+    { label: t.header.about, id: "about" },
+    { label: t.header.partners, id: "partners" },
+    { label: t.header.services, id: "services" },
+    { label: t.header.products, id: "products" },
+    { label: t.header.catalog, id: "catalog" },
+    { label: t.header.contact, id: "contact" },
+  ];
 
   return (
     <header
@@ -45,30 +47,75 @@ export function Header() {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <button
-              key={link.label}
+              key={link.id}
               onClick={() => scrollTo(link.id)}
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              data-testid={`nav-${link.label.toLowerCase()}`}
+              data-testid={`nav-${link.id}`}
             >
               {link.label}
             </button>
           ))}
+
+          {/* Language Toggle */}
+          <div className="flex items-center gap-1 border border-border rounded-full px-1 py-0.5 text-xs font-semibold">
+            <button
+              onClick={() => setLang("en")}
+              className={`px-2 py-1 rounded-full transition-colors ${
+                lang === "en"
+                  ? "bg-primary text-white"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => setLang("es")}
+              className={`px-2 py-1 rounded-full transition-colors ${
+                lang === "es"
+                  ? "bg-primary text-white"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              ES
+            </button>
+          </div>
+
           <Button onClick={() => scrollTo("contact")} size="sm" data-testid="button-request-info">
-            Request Wholesale Info
+            {t.header.cta}
           </Button>
         </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          data-testid="button-mobile-menu"
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile: language toggle + hamburger */}
+        <div className="md:hidden flex items-center gap-2">
+          <div className="flex items-center gap-1 border border-border rounded-full px-1 py-0.5 text-xs font-semibold">
+            <button
+              onClick={() => setLang("en")}
+              className={`px-2 py-1 rounded-full transition-colors ${
+                lang === "en" ? "bg-primary text-white" : "text-muted-foreground"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => setLang("es")}
+              className={`px-2 py-1 rounded-full transition-colors ${
+                lang === "es" ? "bg-primary text-white" : "text-muted-foreground"
+              }`}
+            >
+              ES
+            </button>
+          </div>
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            data-testid="button-mobile-menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
@@ -76,7 +123,7 @@ export function Header() {
         <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-border shadow-lg py-4 px-4 flex flex-col gap-3">
           {navLinks.map((link) => (
             <button
-              key={link.label}
+              key={link.id}
               onClick={() => scrollTo(link.id)}
               className="text-left text-base font-medium py-2 text-foreground hover:text-primary transition-colors"
             >
@@ -84,7 +131,7 @@ export function Header() {
             </button>
           ))}
           <Button onClick={() => scrollTo("contact")} className="w-full mt-2" data-testid="button-mobile-request-info">
-            Request Wholesale Info
+            {t.header.cta}
           </Button>
         </div>
       )}

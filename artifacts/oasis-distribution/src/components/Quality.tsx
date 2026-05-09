@@ -1,30 +1,11 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Anchor, Box, Zap } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
+
+const icons = [ShieldCheck, Anchor, Box, Zap];
 
 export function Quality() {
-  const indicators = [
-    {
-      icon: ShieldCheck,
-      title: "Product Consistency",
-      desc: "Reliable size, taste, and performance in every case."
-    },
-    {
-      icon: Anchor,
-      title: "Frozen Storage",
-      desc: "Optimal temperature control for perfect product integrity."
-    },
-    {
-      icon: Box,
-      title: "Reliable Supply Chain",
-      desc: "Consistent stock availability when you need it."
-    },
-    {
-      icon: Zap,
-      title: "Professional Distribution",
-      desc: "Accurate, on-time deliveries to keep your kitchen running."
-    }
-  ];
+  const { t } = useLang();
 
   return (
     <section className="py-20 bg-white">
@@ -32,18 +13,18 @@ export function Quality() {
         <div className="bg-primary/5 rounded-3xl p-8 md:p-12 border border-primary/10">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Built for Food Service Standards
+              {t.quality.heading}
             </h2>
             <p className="text-muted-foreground">
-              Products sourced from established manufacturing partners, distributed with care.
+              {t.quality.paragraph}
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {indicators.map((item, index) => {
-              const Icon = item.icon;
+            {t.quality.items.map((item, index) => {
+              const Icon = icons[index];
               return (
-                <motion.div 
+                <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

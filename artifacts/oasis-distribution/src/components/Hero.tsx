@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useLang } from "@/contexts/LanguageContext";
 
 function Logo3D() {
   const ref = useRef<HTMLDivElement>(null);
@@ -42,7 +43,6 @@ function Logo3D() {
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="relative"
       >
-        {/* Shadow layer */}
         <motion.div
           style={{
             rotateX,
@@ -52,10 +52,7 @@ function Logo3D() {
           }}
           className="absolute inset-0 rounded-3xl bg-black/40 blur-2xl scale-95 translate-y-6"
         />
-
-        {/* Card */}
         <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl px-10 py-8 overflow-hidden border border-white/20">
-          {/* Glare */}
           <motion.div
             className="absolute inset-0 rounded-3xl pointer-events-none"
             style={{
@@ -66,7 +63,6 @@ function Logo3D() {
               ),
             }}
           />
-
           <img
             src="/oasis-logo.jpg"
             alt="Oasis Distribution"
@@ -80,6 +76,8 @@ function Logo3D() {
 }
 
 export function Hero() {
+  const { t } = useLang();
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -87,7 +85,6 @@ export function Hero() {
 
   return (
     <section className="relative pt-20 md:pt-24 overflow-hidden bg-black min-h-[92vh] flex flex-col">
-      {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
           src="/src/assets/images/hero-food.png"
@@ -97,9 +94,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 text-center px-4 md:px-6 py-16">
-        {/* 3D Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -116,8 +111,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-tight"
         >
-          Authentic Flavors.{" "}
-          <span className="text-primary">Reliable Supply.</span>
+          {t.hero.slogan1}{" "}
+          <span className="text-primary">{t.hero.slogan2}</span>
         </motion.h1>
 
         {/* Tagline */}
@@ -127,14 +122,14 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="text-sm md:text-base text-white/65 max-w-lg mx-auto mb-10 leading-relaxed"
         >
-          Your Latin food wholesale partner in Florida — supplying restaurants, cafés, markets, and food service operators.
+          {t.hero.tagline}
         </motion.p>
 
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Button
@@ -143,7 +138,7 @@ export function Hero() {
             data-testid="button-hero-products"
             className="px-8 py-3 text-base"
           >
-            View Products
+            {t.hero.viewProducts}
           </Button>
           <Button
             size="lg"
@@ -152,7 +147,7 @@ export function Hero() {
             data-testid="button-hero-contact"
             className="px-8 py-3 text-base bg-white/10 border-white/40 text-white hover:bg-white/20 hover:text-white hover:border-white/60 backdrop-blur-sm"
           >
-            Contact Sales
+            {t.hero.contactSales}
           </Button>
         </motion.div>
       </div>

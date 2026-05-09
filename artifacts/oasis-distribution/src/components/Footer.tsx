@@ -1,4 +1,8 @@
+import { useLang } from "@/contexts/LanguageContext";
+
 export function Footer() {
+  const { t } = useLang();
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -22,18 +26,18 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-base mb-4">Quick Links</h4>
+            <h4 className="font-bold text-base mb-4">{t.footer.quickLinks}</h4>
             <ul className="space-y-2 text-sm">
-              <li><button onClick={() => scrollTo("about")} className="text-muted hover:text-white transition-colors">About Us</button></li>
-              <li><button onClick={() => scrollTo("partners")} className="text-muted hover:text-white transition-colors">Our Partners</button></li>
-              <li><button onClick={() => scrollTo("services")} className="text-muted hover:text-white transition-colors">Services</button></li>
-              <li><button onClick={() => scrollTo("products")} className="text-muted hover:text-white transition-colors">Products</button></li>
-              <li><button onClick={() => scrollTo("contact")} className="text-muted hover:text-white transition-colors">Contact</button></li>
+              <li><button onClick={() => scrollTo("about")} className="text-muted hover:text-white transition-colors">{t.footer.nav.about}</button></li>
+              <li><button onClick={() => scrollTo("partners")} className="text-muted hover:text-white transition-colors">{t.footer.nav.partners}</button></li>
+              <li><button onClick={() => scrollTo("services")} className="text-muted hover:text-white transition-colors">{t.footer.nav.services}</button></li>
+              <li><button onClick={() => scrollTo("products")} className="text-muted hover:text-white transition-colors">{t.footer.nav.products}</button></li>
+              <li><button onClick={() => scrollTo("contact")} className="text-muted hover:text-white transition-colors">{t.footer.nav.contact}</button></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-base mb-4">Manufacturing Partners</h4>
+            <h4 className="font-bold text-base mb-4">{t.footer.partners}</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="https://kdlatinfood.com/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white transition-colors">
@@ -47,7 +51,7 @@ export function Footer() {
               </li>
             </ul>
 
-            <h4 className="font-bold text-base mt-6 mb-4">Contact Info</h4>
+            <h4 className="font-bold text-base mt-6 mb-4">{t.footer.contactInfo}</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="tel:+17862775660" className="text-muted hover:text-white transition-colors">
@@ -60,29 +64,24 @@ export function Footer() {
                 </a>
               </li>
               <li className="text-muted">Homestead, Florida</li>
-              <li className="text-muted/70 text-xs mt-1">Wholesale Inquiries Only</li>
+              <li className="text-muted/70 text-xs mt-1">{t.footer.wholesale}</li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-base mb-4">Services</h4>
+            <h4 className="font-bold text-base mb-4">{t.footer.services}</h4>
             <ul className="space-y-2 text-sm text-muted">
-              <li>Food Service Distribution</li>
-              <li>Wholesale Latin Bakery</li>
-              <li>Frozen Food Supply</li>
-              <li>Restaurant &amp; Café Supply</li>
-              <li>Convenience Store Programs</li>
-              <li>Distributor &amp; Market Support</li>
+              {t.footer.serviceList.map((s, i) => <li key={i}>{s}</li>)}
             </ul>
           </div>
         </div>
 
         <div className="pt-8 border-t border-muted-foreground/30 flex flex-col md:flex-row justify-between items-start gap-4">
           <p className="text-sm text-muted">
-            &copy; {new Date().getFullYear()} Oasis Distribution, LLC. All rights reserved.
+            &copy; {new Date().getFullYear()} Oasis Distribution, LLC. {t.footer.copyright}
           </p>
           <p className="text-xs text-muted/70 max-w-2xl md:text-right">
-            Oasis Distribution is an independent distributor of Latin food products. Product availability, packaging, and specifications may vary by manufacturing partner.
+            {t.footer.disclaimer}
           </p>
         </div>
       </div>

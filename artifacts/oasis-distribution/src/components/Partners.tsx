@@ -1,34 +1,44 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
 
 const partners = [
   {
     name: "K&D Latin Food",
     url: "https://kdlatinfood.com/",
     logo: "https://kdlatinfood.com/wp-content/uploads/2025/08/Untitled-design-1.webp",
-    description:
-      "Specialized in frozen Latin foods including empanadas, pastelitos, cachitos, tequeños, and pan de jamón for restaurants, supermarkets, distributors, and cafés.",
     products: ["Empanadas", "Pastelitos", "Cachitos", "Tequeños", "Pan de Jamón"],
     color: "from-orange-50 to-amber-50",
     border: "border-orange-200",
     tag: "bg-orange-100 text-orange-800",
-    logoBg: "bg-white",
+    descKey: "kd" as const,
   },
   {
     name: "PANNA Manufacturing",
     url: "https://www.pannatogo.com/",
     logo: "https://www.pannatogo.com/wp-content/uploads/2023/08/PANNA-MANUFACTURING.png",
-    description:
-      "Wholesale Latin bakery and frozen food manufacturer offering products such as cachitos, tequeños, empanadas, pandebonos, sauces, and food service solutions.",
     products: ["Cachitos", "Tequeños", "Empanadas", "Pandebonos", "Sauces"],
     color: "from-sky-50 to-blue-50",
     border: "border-sky-200",
     tag: "bg-sky-100 text-sky-800",
-    logoBg: "bg-white",
+    descKey: "panna" as const,
   },
 ];
 
+const partnerDescriptions = {
+  en: {
+    kd: "Specialized in frozen Latin foods including empanadas, pastelitos, cachitos, tequeños, and pan de jamón for restaurants, supermarkets, distributors, and cafés.",
+    panna: "Wholesale Latin bakery and frozen food manufacturer offering products such as cachitos, tequeños, empanadas, pandebonos, sauces, and food service solutions.",
+  },
+  es: {
+    kd: "Especialista en comidas latinas congeladas incluyendo empanadas, pastelitos, cachitos, tequeños y pan de jamón para restaurantes, supermercados, distribuidores y cafés.",
+    panna: "Fabricante mayorista de panadería latina y alimentos congelados con productos como cachitos, tequeños, empanadas, pandebonos, salsas y soluciones para servicio de alimentos.",
+  },
+};
+
 export function Partners() {
+  const { lang, t } = useLang();
+
   return (
     <section id="partners" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
@@ -40,13 +50,13 @@ export function Partners() {
           className="text-center mb-14"
         >
           <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-3 px-3 py-1 bg-primary/10 rounded-full">
-            Trusted Sources
+            {t.partners.badge}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Our Manufacturing Partners
+            {t.partners.heading}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Oasis Distribution works with established Latin food manufacturers to bring consistent, high-quality products to food service and wholesale clients across Florida.
+            {t.partners.paragraph}
           </p>
         </motion.div>
 
@@ -61,14 +71,12 @@ export function Partners() {
               className={`bg-gradient-to-br ${partner.color} rounded-2xl border ${partner.border} p-8 shadow-sm hover:shadow-md transition-all duration-300`}
             >
               <div className="flex items-start justify-between mb-5">
-                <div className={`${partner.logoBg} rounded-xl p-3 shadow-sm border border-border/50 flex items-center justify-center`} style={{ minHeight: 72, minWidth: 140 }}>
+                <div className="bg-white rounded-xl p-3 shadow-sm border border-border/50 flex items-center justify-center" style={{ minHeight: 72, minWidth: 140 }}>
                   <img
                     src={partner.logo}
                     alt={`${partner.name} logo`}
                     className="h-12 max-w-[160px] object-contain"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                   />
                 </div>
                 <a
@@ -86,12 +94,12 @@ export function Partners() {
               <h3 className="text-lg font-bold text-foreground mb-2">{partner.name}</h3>
 
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                {partner.description}
+                {partnerDescriptions[lang][partner.descKey]}
               </p>
 
               <div>
                 <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2">
-                  Key Products
+                  {t.partners.keyProducts}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {partner.products.map((p, pi) => (
@@ -113,7 +121,7 @@ export function Partners() {
           className="mt-10 text-center"
         >
           <p className="text-xs text-muted-foreground max-w-2xl mx-auto px-4 py-4 bg-white/70 rounded-xl border border-border">
-            Oasis Distribution is an independent distributor and does not claim ownership of partner brands. Brand names are used only to identify manufacturing partners and product sources.
+            {t.partners.disclaimer}
           </p>
         </motion.div>
       </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
 
 type Partner = "kd" | "panna";
 
@@ -124,6 +125,7 @@ const pannaCategories: { key: PannaCategory; label: string }[] = [
 ];
 
 export function Products() {
+  const { t } = useLang();
   const [activePartner, setActivePartner] = useState<Partner>("kd");
   const [kdCategory, setKdCategory] = useState<KDCategory>("all");
   const [pannaCategory, setPannaCategory] = useState<PannaCategory>("all");
@@ -154,13 +156,13 @@ export function Products() {
           className="text-center mb-12"
         >
           <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-3 px-3 py-1 bg-primary/10 rounded-full">
-            Wholesale Catalog
+            {t.products.badge}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Latin Food Products Available for Wholesale
+            {t.products.heading}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Browse by manufacturing partner. All products are available in food service case quantities for restaurants, cafés, supermarkets, and wholesale buyers.
+            {t.products.paragraph}
           </p>
         </motion.div>
 
@@ -192,7 +194,7 @@ export function Products() {
                 </div>
                 {isActive && (
                   <span className={`ml-auto text-xs font-semibold px-2 py-0.5 rounded-full ${partner.badgeBg} ${partner.badgeText}`}>
-                    Viewing
+                    {t.products.viewing}
                   </span>
                 )}
               </button>
