@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "Jp_A-9arCPNRKrKgc_Yd3"
@@ -30,3 +29,21 @@ id = "OAPPzs-jDMDlHRC52NfRf"
 uri = "file://artifacts/oasis-distribution/src/assets/images/product-arepas.png"
 type = "image"
 title = "Traditional arepas"
+
+[[outputs]]
+id = "txfBhb2sz7dsEB2ZgEBpM"
+uri = "file://attached_assets/stock_images/bakery_factory_1.jpg"
+type = "image"
+title = "commercial bakery food production factory workers industrial kitchen pastry manufacturing"
+
+[[outputs]]
+id = "Hc8y78mmFYrsq_f-5CGLF"
+uri = "file://attached_assets/stock_images/bakery_factory_2.jpg"
+type = "image"
+title = "commercial bakery food production factory workers industrial kitchen pastry manufacturing"
+
+[[outputs]]
+id = "amIk8ABbu1ogUvtRaStHa"
+uri = "file://attached_assets/stock_images/bakery_factory_3.jpg"
+type = "image"
+title = "commercial bakery food production factory workers industrial kitchen pastry manufacturing"
