@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -19,6 +20,17 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 const queryClient = new QueryClient();
 
 function Home() {
+  useEffect(() => {
+    const target = sessionStorage.getItem("scrollTo");
+    if (target) {
+      sessionStorage.removeItem("scrollTo");
+      setTimeout(() => {
+        const el = document.getElementById(target);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 120);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen w-full font-sans text-foreground bg-white">
       <Header />

@@ -8,7 +8,7 @@ export function Header() {
   const { lang, setLang, t } = useLang();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [, navigate] = useLocation();
+  const [location, navigate] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -23,9 +23,12 @@ export function Header() {
   };
 
   const handleNavClick = (id: string) => {
+    setMobileMenuOpen(false);
     if (id === "products") {
       navigate("/products");
-      setMobileMenuOpen(false);
+    } else if (location === "/products") {
+      sessionStorage.setItem("scrollTo", id);
+      navigate("/");
     } else {
       scrollTo(id);
     }
