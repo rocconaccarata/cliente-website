@@ -88,12 +88,19 @@ export function Hero() {
   return (
     <section className="relative pt-20 md:pt-24 overflow-hidden bg-black min-h-[92vh] flex flex-col">
       <div className="absolute inset-0 z-0">
-        <img
-          src="/products/empanada-venezolana-beef.jpg"
-          alt="Latin Bakery Products"
-          className="w-full h-full object-cover opacity-45"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+        <div className="w-full h-full grid grid-cols-2">
+          <img
+            src="/products/tequeno-cheese.jpg"
+            alt=""
+            className="w-full h-full object-cover opacity-50"
+          />
+          <img
+            src="/products/empanada-venezolana-beef.jpg"
+            alt=""
+            className="w-full h-full object-cover opacity-50"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/40 to-black/75" />
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 text-center px-4 md:px-6 py-16">
