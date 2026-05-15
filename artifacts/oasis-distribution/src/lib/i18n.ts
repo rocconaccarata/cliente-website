@@ -178,6 +178,41 @@ export const translations = {
         description: "Your inquiry details are pre-filled. Just hit Send.",
       },
     },
+    topBar: {
+      cutoff: "Orders by 4:00 PM for same-day dispatch",
+      delivery: "Free delivery on $250+",
+      area: "Serving: Florida City → Fort Lauderdale",
+    },
+    howItWorks: {
+      badge: "How It Works",
+      heading: "Ordering is Simple",
+      subheading: "Three steps from first contact to delivery at your door.",
+      ctaText: "Ready to place your first order? Call or WhatsApp us:",
+      steps: [
+        {
+          title: "Contact Us",
+          description:
+            "Call, WhatsApp at (786) 277-5660, or fill out the contact form. Tell us what you need and we'll check availability.",
+        },
+        {
+          title: "We Confirm",
+          description:
+            "Our team confirms product availability and schedules your delivery. Orders must be placed by 4:00 PM for same-day dispatch.",
+        },
+        {
+          title: "We Deliver",
+          description:
+            "Free delivery on orders of $250 or more, from Florida City to Fort Lauderdale. Payment by check or Zelle at delivery.",
+        },
+      ],
+    },
+    productsCTA: {
+      heading: "Ready to Place Your Order?",
+      subheading:
+        "Contact us by phone, WhatsApp, or the form below. Orders confirmed before 4:00 PM ship the same day.",
+      form: "Send a Message",
+      note: "Free delivery on orders of $250 or more · Payment: check or Zelle",
+    },
     faq: {
       badge: "FAQ",
       heading: "Frequently Asked Questions",
@@ -412,6 +447,41 @@ export const translations = {
         title: "Abriendo cliente de correo…",
         description: "Los datos de tu consulta están pre-llenados. Solo haz clic en Enviar.",
       },
+    },
+    topBar: {
+      cutoff: "Pedidos antes de las 4:00 PM para despacho el mismo día",
+      delivery: "Entrega gratis en pedidos de $250+",
+      area: "Área: Florida City → Fort Lauderdale",
+    },
+    howItWorks: {
+      badge: "Cómo Funciona",
+      heading: "Ordenar es Sencillo",
+      subheading: "Tres pasos desde el primer contacto hasta la entrega en tu local.",
+      ctaText: "¿Listo para tu primer pedido? Llámanos o escríbenos por WhatsApp:",
+      steps: [
+        {
+          title: "Contáctanos",
+          description:
+            "Llama, escribe por WhatsApp al (786) 277-5660 o completa el formulario de contacto. Cuéntanos qué necesitas y verificamos disponibilidad.",
+        },
+        {
+          title: "Confirmamos",
+          description:
+            "Nuestro equipo confirma la disponibilidad de productos y coordina tu entrega. Los pedidos deben hacerse antes de las 4:00 PM para despacho el mismo día.",
+        },
+        {
+          title: "Entregamos",
+          description:
+            "Entrega gratis en pedidos de $250 o más, desde Florida City hasta Fort Lauderdale. Pago con cheque o Zelle al momento de la entrega.",
+        },
+      ],
+    },
+    productsCTA: {
+      heading: "¿Listo para Hacer tu Pedido?",
+      subheading:
+        "Contáctanos por teléfono, WhatsApp o el formulario. Los pedidos confirmados antes de las 4:00 PM se despachan el mismo día.",
+      form: "Enviar Mensaje",
+      note: "Entrega gratis en pedidos de $250 o más · Pago: cheque o Zelle",
     },
     faq: {
       badge: "Preguntas Frecuentes",
