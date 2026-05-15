@@ -89,7 +89,7 @@ export function Hero() {
     <section className="relative pt-20 md:pt-24 overflow-hidden bg-black min-h-[92vh] flex flex-col">
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/hero-food.png"
+          src="/opengraph.jpg"
           alt="Latin Bakery Products"
           className="w-full h-full object-cover opacity-45"
         />
