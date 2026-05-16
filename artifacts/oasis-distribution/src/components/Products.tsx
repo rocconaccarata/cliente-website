@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/contexts/LanguageContext";
 
-type Category = "all" | "pastelitos" | "emp-venezolana" | "emp-argentina" | "cachitos" | "tequenos" | "pan-de-jamon" | "pandebono";
+type Category = "all" | "pastelitos" | "emp-venezolana" | "emp-argentina" | "cachitos" | "tequenos" | "pan-de-jamon" | "pandebono" | "dmt-bakery" | "dmt-chorizos" | "dmt-meals";
 
 interface Product {
   id: string;
@@ -72,6 +72,32 @@ const allProducts: Product[] = [
 
   // Pandebono
   { id: "panna-pandebono", name: "Pandebono", variant: "Classic Cheese", description: "White cheese and tapioca baked into puffy buns. Crispy outside, light and chewy inside. 4 pieces per container, 57g each.", descEs: "Queso blanco y tapioca horneados en panecillos esponjosos. Crujientes por fuera, suaves y masticables por dentro. 4 piezas por envase, 57g cada una.", image: "/products/pandebono.jpg", tags: ["Frozen", "Ready to Bake", "Bread"], category: "pandebono" },
+
+  // De Mi Tierra — Latin Bakery
+  { id: "dmt-bunuelos", name: "Buñuelos", variant: "Colombian", description: "Traditional Colombian cheese fritters. Crispy outside, soft inside. Perfect for breakfast or as a snack.", descEs: "Buñuelos tradicionales colombianos de queso. Crujientes por fuera, suaves por dentro. Perfectos para desayuno o merienda.", image: "/products/dmt/bunuelos.jpg", tags: ["Frozen", "Ready to Fry", "Breakfast"], category: "dmt-bakery" },
+  { id: "dmt-empanadas-carne", name: "Empanadas de Carne", variant: "Colombian Style", description: "Crispy beef empanadas filled with seasoned ground beef. Ready to fry or bake.", descEs: "Empanadas de carne crujientes rellenas de carne molida sazonada. Listas para freír u hornear.", image: "/products/dmt/empanadas-carne.jpg", tags: ["Frozen", "Fry or Bake", "Savory"], category: "dmt-bakery" },
+  { id: "dmt-tequenos-queso", name: "Tequeños de Queso", variant: "Venezuelan Style", description: "Venezuelan cheese sticks wrapped in crispy dough. A beloved party appetizer.", descEs: "Palitos de queso venezolanos envueltos en masa crujiente. Un aperitivo muy querido para fiestas.", image: "/products/dmt/tequenos-queso.webp", tags: ["Frozen", "Fry or Bake", "Appetizer"], category: "dmt-bakery" },
+  { id: "dmt-arepas-queso", name: "Arepas de Queso", variant: "Colombian Style", description: "Traditional Colombian cheese arepas made with white corn. Ready to heat and serve.", descEs: "Arepas de queso colombianas tradicionales hechas con maíz blanco. Listas para calentar y servir.", image: "/products/dmt/arepas-queso.webp", tags: ["Frozen", "Ready to Heat", "Breakfast"], category: "dmt-bakery" },
+  { id: "dmt-arepas-choclo", name: "Arepas de Choclo", variant: "Sweet Corn", description: "Sweet corn arepas with a slightly sweet flavor. Perfect for breakfast or as a snack alongside savory dishes.", descEs: "Arepas de choclo dulce con un ligero sabor dulce. Perfectas para desayuno o como acompañamiento.", image: "/products/dmt/arepas-choclo.webp", tags: ["Frozen", "Ready to Heat", "Breakfast"], category: "dmt-bakery" },
+  { id: "dmt-pandebono", name: "Pandebono", variant: "Colombian Cheese Bread", description: "Colombian cheese bread made with cassava flour. Light, chewy, and delicious.", descEs: "Pan de queso colombiano hecho con harina de yuca. Liviano, masticable y delicioso.", image: "/products/dmt/pandebono.jpg", tags: ["Frozen", "Ready to Bake", "Bread"], category: "dmt-bakery" },
+  { id: "dmt-empanadas-pollo", name: "Empanadas de Pollo", variant: "Colombian Style", description: "Golden chicken empanadas with savory seasoned chicken filling. Pack of 10.", descEs: "Empanadas doradas de pollo con relleno de pollo sazonado. Paquete de 10.", image: "/products/dmt/empanadas-pollo.webp", tags: ["Frozen", "Fry or Bake", "Savory"], category: "dmt-bakery" },
+
+  // De Mi Tierra — Chorizos & Sausages
+  { id: "dmt-chorizo-argentino", name: "Chorizo Argentino", variant: "Argentine Style", description: "Classic Argentine chorizo, perfect for asados (barbecues). Made with premium cuts and authentic spices.", descEs: "Chorizo argentino clásico, perfecto para asados. Hecho con cortes premium y especias auténticas.", image: "/products/dmt/chorizo-argentino.jpeg", tags: ["Fresh/Frozen", "Grill or Pan"], category: "dmt-chorizos" },
+  { id: "dmt-chorizo-colombiano", name: "Chorizo Colombiano", variant: "Colombian Style", description: "Traditional Colombian-style chorizo made with premium pork and authentic spices.", descEs: "Chorizo tradicional colombiano hecho con cerdo de primera calidad y especias auténticas.", image: "/products/dmt/chorizo-colombiano.jpg", tags: ["Fresh/Frozen", "Grill or Pan"], category: "dmt-chorizos" },
+  { id: "dmt-chorizo-santarrosano", name: "Chorizo Santarrosano", variant: "Santa Rosa Style", description: "Specialty chorizo from the Santa Rosa region of Colombia. Known for its unique bold flavor.", descEs: "Chorizo especial de la región de Santa Rosa, Colombia. Conocido por su sabor único e intenso.", image: "/products/dmt/chorizo-santarrosano.jpg", tags: ["Fresh/Frozen", "Grill or Pan", "Specialty"], category: "dmt-chorizos" },
+  { id: "dmt-chorizo-mexicano", name: "Chorizo Mexicano", variant: "Mexican Style", description: "Authentic Mexican chorizo with bold chili flavors. Perfect for tacos, burritos, and egg dishes.", descEs: "Chorizo mexicano auténtico con intenso sabor a chile. Perfecto para tacos, burritos y platillos de huevo.", image: "/products/dmt/chorizo-mexicano.jpg", tags: ["Fresh/Frozen", "Versatile"], category: "dmt-chorizos" },
+  { id: "dmt-salami-dominicano", name: "Salami Dominicano", variant: "Dominican Style", description: "Signature salami made with a blend of Latin American spices. Perfect for charcuterie boards.", descEs: "Salami de firma hecho con una mezcla de especias latinoamericanas. Perfecto para tablas de embutidos.", image: "/products/dmt/salami-dominicano.webp", tags: ["Ready to Slice", "Charcuterie"], category: "dmt-chorizos" },
+  { id: "dmt-chorizo-venezolano", name: "Chorizo Venezolano", variant: "Venezuelan Style", description: "Venezuelan-style chorizo with distinctive paprika and cumin notes. A staple for Latin menus.", descEs: "Chorizo venezolano con notas distintivas de pimentón y comino. Un básico para menús latinos.", image: "/products/dmt/chorizo-venezolano.webp", tags: ["Fresh/Frozen", "Grill or Pan"], category: "dmt-chorizos" },
+  { id: "dmt-los-pepes-chorizo", name: "Los Pepes Chorizo", variant: "Spanish Style", description: "Premium Spanish chorizo from Los Galleguitos. Brings authentic Iberian flavor to Latin menus.", descEs: "Chorizo español premium de Los Galleguitos. Trae sabor ibérico auténtico a los menús latinos.", image: "/products/dmt/los-pepes-chorizo.jpg", tags: ["Ready to Use", "Specialty"], category: "dmt-chorizos" },
+  { id: "dmt-longaniza-mexicana", name: "Longaniza Mexicana", variant: "Mexican Style", description: "Traditional Mexican longaniza with a perfect balance of spices. Ideal for grilling and breakfast menus.", descEs: "Longaniza mexicana tradicional con equilibrio perfecto de especias. Ideal para grill y menús de desayuno.", image: "/products/dmt/longaniza-mexicana.jpeg", tags: ["Fresh/Frozen", "Grill or Pan", "Breakfast"], category: "dmt-chorizos" },
+  { id: "dmt-morcilla", name: "Morcilla Colombiana", variant: "Colombian Style", description: "Traditional blood sausage made with rice and spices. A beloved delicacy across Latin America.", descEs: "Morcilla tradicional hecha con arroz y especias. Una delicia muy querida en toda América Latina.", image: "/products/dmt/morcilla.webp", tags: ["Fresh/Frozen", "Grill or Fry", "Specialty"], category: "dmt-chorizos" },
+
+  // De Mi Tierra — Prepared Meals
+  { id: "dmt-arroz-amarillo", name: "Arroz Amarillo", variant: "Yellow Rice", description: "Traditional yellow rice made with saffron and seasonings. A colorful and flavorful side dish.", descEs: "Arroz amarillo tradicional hecho con azafrán y condimentos. Un acompañamiento colorido y sabroso.", image: "/products/dmt/arroz-amarillo.jpg", tags: ["Frozen", "Ready to Heat", "Side Dish"], category: "dmt-meals" },
+  { id: "dmt-arroz-con-pollo", name: "Arroz con Pollo", variant: "Classic Latin", description: "Classic Latin chicken and rice dish made with tender chicken pieces and seasoned rice.", descEs: "Clásico arroz con pollo latino hecho con trozos de pollo tierno y arroz sazonado.", image: "/products/dmt/arroz-con-pollo.jpg", tags: ["Frozen", "Ready to Heat", "Entrée"], category: "dmt-meals" },
+  { id: "dmt-steak-fajitas", name: "Steak Fajitas", variant: "Marinated", description: "Tender strips of marinated beef steak with peppers and onions. Simply heat and enjoy.", descEs: "Tiras tiernas de bistec marinado con pimientos y cebollas. Solo caliente y disfrute.", image: "/products/dmt/steak-fajitas.webp", tags: ["Frozen", "Ready to Heat", "Entrée"], category: "dmt-meals" },
+  { id: "dmt-carne-mechada", name: "Carne Mechada", variant: "Venezuelan Style", description: "Venezuelan-style shredded beef in a rich tomato-based sauce. Perfect for arepas and rice dishes.", descEs: "Carne mechada venezolana en una rica salsa de tomate. Perfecta para arepas y platos de arroz.", image: "/products/dmt/carne-mechada.webp", tags: ["Frozen", "Ready to Heat", "Savory"], category: "dmt-meals" },
 ];
 
 const categories: { key: Category; label: { en: string; es: string } }[] = [
@@ -83,6 +109,9 @@ const categories: { key: Category; label: { en: string; es: string } }[] = [
   { key: "tequenos", label: { en: "Tequeños", es: "Tequeños" } },
   { key: "pan-de-jamon", label: { en: "Pan de Jamón", es: "Pan de Jamón" } },
   { key: "pandebono", label: { en: "Pandebono", es: "Pandebono" } },
+  { key: "dmt-bakery", label: { en: "Arepas & Bakery", es: "Arepas y Panadería" } },
+  { key: "dmt-chorizos", label: { en: "Chorizos & Sausages", es: "Chorizos y Embutidos" } },
+  { key: "dmt-meals", label: { en: "Prepared Meals", es: "Platos Preparados" } },
 ];
 
 export function Products() {
